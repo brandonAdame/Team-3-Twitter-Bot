@@ -21,4 +21,4 @@ A twitter bot that messages users the weather based on conditions that they spec
 Enjoy! 🔥
 
 #### 🕶 🤙 Project Contributers:
-[Trevor](github.com/Downeyt16), [Nick](github.com/ellisn15), [Daniel](github.com/DanielLeeMeeks), [Jared](githib.com/phillipsjar12), [Brandon](github.com/brandonAdame)
+[Trevor](https://github.com/Downeyt16), [Nick](https://github.com/ellisn15), [Daniel](https://github.com/DanielLeeMeeks), [Jared](https://githib.com/phillipsjar12), [Brandon](https://github.com/brandonAdame)
