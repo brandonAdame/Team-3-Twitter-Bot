@@ -1,5 +1,4 @@
-# Team-3-Twitter-Bot
-![image](https://upload.wikimedia.org/wikipedia/fr/thumb/c/c8/Twitter_Bird.svg/944px-Twitter_Bird.svg.png)
+# 🌦 Team-3-Twitter-Bot 🐣
 A twitter bot that messages users the weather based on conditions that they specifies. 
 
 ![image](https://img.shields.io/badge/version-v1.0-blue.svg)
@@ -18,3 +17,5 @@ A twitter bot that messages users the weather based on conditions that they spec
 3. Activate virtual environment: `source Team-3-Twitter-Bot/bin/activate`
 4. To run a program, do: `python [program-name].py`
 5. To deactivate virtualenv, type this is your terminal `deactivate`
+
+Enjoy! 🔥
