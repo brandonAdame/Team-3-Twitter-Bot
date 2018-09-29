@@ -1,5 +1,5 @@
 # 🌦 Team-3-Twitter-Bot 🐣
-A twitter bot that messages users the weather based on conditions that they specifies. 
+A twitter bot that messages users the weather based on conditions that they specifies. 🤖
 
 ![image](https://img.shields.io/badge/version-v1.0-blue.svg)
 ![image](https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen.svg)
