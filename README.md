@@ -19,3 +19,6 @@ A twitter bot that messages users the weather based on conditions that they spec
 5. To deactivate virtualenv, type this is your terminal `deactivate`
 
 Enjoy! 🔥
+
+#### 🕶 🤙 Project Contributers:
+[Trevor](github.com/Downeyt16), [Nick](github.com/ellisn15), [Daniel](github.com/DanielLeeMeeks), [Jared](githib.com/phillipsjar12), [Brandon](github.com/brandonAdame)
