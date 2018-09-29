@@ -1,4 +1,5 @@
 # Team-3-Twitter-Bot
+![image](https://upload.wikimedia.org/wikipedia/fr/thumb/c/c8/Twitter_Bird.svg/944px-Twitter_Bird.svg.png)
 A twitter bot that messages users the weather based on conditions that they specifies. 
 
 ![image](https://img.shields.io/badge/version-v1.0-blue.svg)
