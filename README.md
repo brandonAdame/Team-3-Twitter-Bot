@@ -2,6 +2,7 @@
 A twitter bot that messages users the weather based on conditions that they specifies. 
 
 ![image](https://img.shields.io/badge/version-v1.0-blue.svg)
+![image](https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen.svg)
 
 # Getting Started
 1. Clone the repo `git clone git@github.com:ECU-CSCI-3030/Team-3-Twitter-Bot.git`
