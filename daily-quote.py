@@ -1,3 +1,10 @@
+"""
+File: daily-quote.py
+Author: Brandon Adame Gachuz
+Init date: 9/29/2018
+
+This file will likely be removed
+"""
 from requests import get
 import json
 

@@ -2,12 +2,13 @@
 File: brainyquote.py
 Author: Brandon Adame Gachuz
 Init date: 9/28/2018
+Last Updated: 9/29/2018
 
 This file is intended to be used to get the quote of the day
 from brainyquote.com
 
-Since brainyquote does not provide an API, I used a couple of
-powerful libraries to scrape the daily quote from their website.
+Since brainyquote.com does not provide an API, I scraped
+the website to get the quotes desired.
 """
 from requests import get
 from bs4 import BeautifulSoup
@@ -32,8 +33,8 @@ def get_len_quote_containers(url):
 
 def get_daily_quote(url):
     """
-    This method gets the daily quote from brainyquote.com
-    along with the author
+    This method gets the daily quote and author
+    from brainyquote.com
     """
     html_soup = get_soup(url)
     dq_containers = html_soup.find_all('div', class_='clearfix')
@@ -44,7 +45,9 @@ def get_daily_quote(url):
     dq = first_quote.a.text
 
     # accessing the dq author text
-    author = first_quote.find('a', class_="bq-aut qa_107273 oncl_a").text
+    author_containers = first_quote.find_all('a')
+    author = author_containers[1].text
+
     print("{}\n\t-{}".format(dq, author))
 
 
