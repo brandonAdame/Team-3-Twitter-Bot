@@ -8,10 +8,11 @@ tweetSkipper = False;
 
 def tweet(message, link):
     try:
-        consumer_key = "sjGNQBmUgqzqrZfNhCTMu2otq"
-        consumer_secret = "UeRm4OUwG9oui7w1TnS9c1oJUrQkf7CEylUoZfhvY7qUOz5nED"
-        access_key = "3904219755-HLQg5aykGwqT4wTcPn8kW3MzoINleB4XsBitvra"
-        access_secret = "3pzbW8e10Xmythjf5ZnsnMGPwBRr9VtPt4Aqc4HguwPR4"
+        #@DanielLeeMeeks2
+        consumer_key = "U01EcJ8sqBgSaafvPW1u3nHzR"
+        consumer_secret = "tt9UdUqKXHVDpJguTyS1fKhTmPxUHq2VRKaqg056ZirIGH3tgA"
+        access_key = "3904219755-szrud8F89KgaAPLzjXpKbIWIvVvIqrkeOXLd1vd"
+        access_secret = "DBwqE09xXK69tHHlqqv9pFwY0u2V3APoSOjRLVuPJO8Kn"
 
         auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
         auth.set_access_token(access_key, access_secret)
