@@ -1,6 +1,6 @@
 #test for google cloud
 
-import sleep
+import time
 
 print ("30")
 time.sleep(10)
