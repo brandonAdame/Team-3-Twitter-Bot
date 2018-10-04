@@ -23,6 +23,24 @@ A twitter bot that messages users the weather based on conditions that they spec
 
 5. To deactivate virtualenv, type this in your terminal `deactivate`
 
+## Project Timeline
+
+The project will be based on a weekly sprints. The project will be due on the last day of class, December 3. The final project presentations will be held on November 20 and 27.
+
+Weeks:
+
+1. Build the direct messaging feature
+2. Build database
+3. Database testing
+4. Build weather module
+
+- Build clothing suggestion module
+- Build daily quote module
+- Build word of the day module
+- Build picture module
+- Build top news headline module
+- Build shower thoughts module
+
 ## Project Contributers
 
 [Trevor](https://github.com/Downeyt16)
