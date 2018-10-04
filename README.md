@@ -46,13 +46,13 @@ Weeks:
 
 ## Built With
 
-- [Tweepy API](http://www.tweepy.org/) - Accessing the Twitter API.
+- [Tweepy](http://www.tweepy.org/) - Accessing the Twitter API.
 
-- [OpenWeatherMap API](https://openweathermap.org/api) - Pulls current weather data.
+- [OpenWeatherMap](https://openweathermap.org/api) - Pulls current weather data.
 
-- [Request API](https://developer.mozilla.org/en-US/docs/Web/API/Request) - The request interface of the Fetch API represents a resource request.
+- [Request](https://developer.mozilla.org/en-US/docs/Web/API/Request) - The request interface of the Fetch API represents a resource request.
 
-- [Beautiful Soup Documentation API](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) - Used for pulling data out of HTML and XML files.
+- [Beautiful Soup Documentation](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) - Used for pulling data out of HTML and XML files.
 
 - [virtulaenv](https://virtualenv.pypa.io/en/stable/) - Is a tool to create isolated Python environments.
 
