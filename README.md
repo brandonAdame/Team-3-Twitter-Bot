@@ -23,6 +23,7 @@ A twitter bot that messages users the weather based on conditions that they spec
 
 5. To deactivate virtualenv, type this in your terminal `deactivate`
 
+
 ## Project Timeline
 
 The project will be based on a weekly sprints. The project will be due on the last day of class, December 3. The final project presentations will be held on November 20 and 27.
@@ -40,6 +41,21 @@ Weeks:
 - Build picture module
 - Build top news headline module
 - Build shower thoughts module
+
+
+
+## Built With
+
+- [Tweepy API](http://www.tweepy.org/) - Accessing the Twitter API.
+
+- [OpenWeatherMap API](https://openweathermap.org/api) - Pulls current weather data.
+
+- [Request API](https://developer.mozilla.org/en-US/docs/Web/API/Request) - The request interface of the Fetch API represents a resource request.
+
+- [Beautiful Soup Documentation API](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) - Used for pulling data out of HTML and XML files.
+
+- [virtulaenv](https://virtualenv.pypa.io/en/stable/) - Is a tool to create isolated Python environments.
+
 
 ## Project Contributers
 
