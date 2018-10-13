@@ -1,11 +1,17 @@
-import MySQLdb
+import mysql.connector
 
-conn = MySQLdb.connect(host="35.196.238.195", user="root", passwd="85v6EGGnz8FOmcgD", db="TwitterBot")
-cursor = conn.cursor()
+mydb = mysql.connector.connect(
+  host="35.196.238.195",
+  user="root",
+  passwd="85v6EGGnz8FOmcgD",
+  database="TwitterBot"
+)
 
-cursor.execute('SELECT * FROM events')
-row = cursor.fetchone()
+mycursor = mydb.cursor()
 
-conn.close()
+mycursor.execute("SELECT * FROM events ORDER by nextRunTime")
 
-print(row)
+myresult = mycursor.fetchall()
+
+for x in myresult:
+  print(x)
