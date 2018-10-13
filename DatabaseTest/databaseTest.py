@@ -1,17 +1,35 @@
-import mysql.connector
+##import mysql.connector
+import pymysql.cursors
 
-mydb = mysql.connector.connect(
-  host="35.196.238.195",
-  user="python",
-  passwd="K56a44EEq2Hw",
-  database="TwitterBot"
-)
+connection = pymysql.connect(host='35.196.238.195',
+                             user='python',
+                             password='K56a44EEq2Hw',
+                             db='TwitterBot',
+                             charset='utf8mb4',
+                             cursorclass=pymysql.cursors.DictCursor)
 
-mycursor = mydb.cursor()
+try:
+    with connection.cursor() as cursor:
+    # Read a single record
+     sql = "SELECT * FROM `events`"
+     #cursor.execute(sql, ('webmaster@python.org',))
+     result = cursor.fetchone()
+     print(result)
+finally:
+    connection.close()
+    
+##mydb = mysql.connector.connect(
+##  host="35.196.238.195",
+##  user="python",
+##  passwd="K56a44EEq2Hw",
+##  database="TwitterBot"
+##)
 
-mycursor.execute("SELECT * FROM events ORDER by nextRunTime")
+##mycursor = mydb.cursor()
 
-myresult = mycursor.fetchall()
+m##ycursor.execute("SELECT * FROM events ORDER by nextRunTime")
 
-for x in myresult:
-  print(x)
+##myresult = mycursor.fetchall()
+
+##for x in myresult:
+##  print(x)
