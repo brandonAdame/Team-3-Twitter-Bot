@@ -1,7 +1,7 @@
 ##import mysql.connector
 import pymysql.cursors
 
-connection = pymysql.connect(host='35.196.238.195',
+connection = pymysql.connect(host='csci3030-team3',
                              user='python',
                              password='K56a44EEq2Hw',
                              db='TwitterBot',
