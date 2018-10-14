@@ -1,7 +1,7 @@
 ##import mysql.connector
 import pymysql.cursors
 
-connection = pymysql.connect(host='localhost',
+connection = pymysql.connect(host='https://www.googleapis.com/sql/v1beta4/projects/csci-3030-team-3/instances/csci3030-team3',
                              user='python',
                              password='K56a44EEq2Hw',
                              db='TwitterBot',
