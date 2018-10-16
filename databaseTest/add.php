@@ -36,5 +36,17 @@ if ($goodEventType){
 			$result = mysqli_query($myConnection, "INSERT INTO `localWeather` (`idNumber`, `location`, `sendTime`) VALUES ($id, '$location', '$sendTime');") or die(mysqli_error($myConnection));
 	}
 
+
+
+echo "{\"events\":[";
+		echo "{\"id\": \"$id\", \"twitterAccount\": \"$twitterAccount\", \"eventType\": \"$eventType\", \"nextRunTime\": \"$nextRunTime_formatted\", \"lastRunTime\":\"$lastRunTime\"";
+		if ($eventType == "localWeather"){echo", \"location\": \"$location\", \"sendTime\": \"$sendTime\"";
+		}else if ($eventType == "dailyStocks"){	echo ", \"symbol\": \"$symbol\"";}
+echo "}";
+echo "]}";
+header('Content-Type: application/json');
+
+
+
 }
 ?>
