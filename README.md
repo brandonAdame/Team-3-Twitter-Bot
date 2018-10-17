@@ -6,8 +6,8 @@ A twitter bot that messages users the weather based on conditions that they spec
 
 # Getting Started
 1. Clone the repo `git clone git@github.com:ECU-CSCI-3030/Team-3-Twitter-Bot.git`
-2. Install dependencies
-    ```
+2. If you don't want to use the virtualenv contained here, install the following dependencies
+    ```bash
     pip install tweepy
     pip install pyowm
     pip install requests
