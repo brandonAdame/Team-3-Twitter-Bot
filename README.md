@@ -46,7 +46,7 @@ Weeks:
 
 ## Built With
 
-- [Tweepy](http://docs.tweepy.org/en/v3.5.0/getting_started.html) - Accessing the Twitter API.
+- [Tweepy](http://docs.tweepy.org/en/v3.5.0/api.html#api-reference) - Accessing the Twitter API.
 
 - [OpenWeatherMap](https://openweathermap.org/api) - Pulls current weather data.
 
