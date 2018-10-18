@@ -50,6 +50,14 @@ def unsubAll(username):
     apiURL = baseURL + "unsub.php?twitterAccount="+username
     return requests.get(apiURL).text
 
+def updateEventTimeAuto(id):
+    apiURL = baseURL + "run.php?id=" + str(id)
+    return requests.get(apiURL).text
+
+def updateEventTime(id, nextSendTime):
+    apiURL = baseURL + "run.php?id=" + str(id) + "&nextSendTime=" + nextSendTime
+    return requests.get(apiURL).text
+
 ##DEMOS
 print("\nDemos\n")
 
@@ -63,6 +71,12 @@ print("")
 print("addLocalWeatherEvent(\"DanielLeeMeeks2\", \"27834\", \"20:00:00\"): " + str(addLocalWeatherEvent("DanielLeeMeeks2", "27834", "20:00:00")))
 print("addDailyStocks(\"DanielLeeMeeks2\", \"ATT\"): " + str(addDailyStocks("DanielLeeMeeks2", "ATT")))
 print("addDailyQuote(\"DanielLeeMeeks2\"): " + str(addDailyQuote("DanielLeeMeeks2")))
+print("")
+
+
+##Updating Next/Last send time
+print("updateEventTime(1): " + str(updateEventTimeAuto(1)))
+print("updateEventTime(1), \"2020-01-01 08:00:00\"): " + str(updateEventTime(1, "2020-01-01 08:00:00")))
 print("")
 
 #DELETING EVENTS (Uncomment these and change parameters to test.)

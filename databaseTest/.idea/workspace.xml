@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c7b9364d-c8b5-4958-8406-e79a9e1df9a4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/database.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -12,7 +11,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/databaseTest$database.coverage" NAME="database Coverage Results" MODIFIED="1539722589970" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/databaseTest$database.coverage" NAME="database Coverage Results" MODIFIED="1539900655362" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="695261238">
@@ -21,17 +20,18 @@
           <entry key="project.closed" value="1" />
           <entry key="project.open.time.20" value="1" />
           <entry key="project.open.time.35" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.4" value="1" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="1501" />
+          <entry key="py" value="1737" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="1501" />
+          <entry key="Python" value="1737" />
         </counts>
       </usages-collector>
     </session>
@@ -41,13 +41,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/database.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="404">
-              <caret line="68" column="1" selection-start-line="68" selection-start-column="1" selection-end-line="68" selection-end-column="1" />
+            <state relative-caret-position="324">
+              <caret line="78" column="25" selection-start-line="78" selection-start-column="25" selection-end-line="78" selection-end-column="25" />
               <folding>
-                <marker date="1539722601644" expanded="true" signature="112:117" ph="..." />
-                <marker date="1539722601644" expanded="true" signature="269:270" ph="..." />
-                <marker date="1539722601644" expanded="true" signature="612:617" ph="..." />
-                <marker date="1539722601644" expanded="true" signature="612:1742" ph="..." />
+                <marker date="1539900689407" expanded="true" signature="112:117" ph="..." />
+                <marker date="1539900689407" expanded="true" signature="269:270" ph="..." />
+                <marker date="1539900689407" expanded="true" signature="612:617" ph="..." />
+                <marker date="1539900689407" expanded="true" signature="612:2014" ph="..." />
+                <marker date="1539900689407" expanded="true" signature="1853:1973" ph="..." />
               </folding>
             </state>
           </provider>
@@ -90,7 +91,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -102,6 +102,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -168,7 +169,7 @@
     <frame x="-4" y="-4" width="1928" height="1036" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13865097" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14025696" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -197,16 +198,28 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/database.py</url>
+          <line>70</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/database.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="68" column="1" selection-start-line="68" selection-start-column="1" selection-end-line="68" selection-end-column="1" />
+        <state relative-caret-position="324">
+          <caret line="78" column="25" selection-start-line="78" selection-start-column="25" selection-end-line="78" selection-end-column="25" />
           <folding>
-            <marker date="1539722601644" expanded="true" signature="112:117" ph="..." />
-            <marker date="1539722601644" expanded="true" signature="269:270" ph="..." />
-            <marker date="1539722601644" expanded="true" signature="612:617" ph="..." />
-            <marker date="1539722601644" expanded="true" signature="612:1742" ph="..." />
+            <marker date="1539900689407" expanded="true" signature="112:117" ph="..." />
+            <marker date="1539900689407" expanded="true" signature="269:270" ph="..." />
+            <marker date="1539900689407" expanded="true" signature="612:617" ph="..." />
+            <marker date="1539900689407" expanded="true" signature="612:2014" ph="..." />
+            <marker date="1539900689407" expanded="true" signature="1853:1973" ph="..." />
           </folding>
         </state>
       </provider>
