@@ -6,7 +6,7 @@ import tweepy
 apiKey = "07a6ed1ad10a5c97fa9daa3c5babcaab"
 
 #Twitter keys
-#CSCIteam3
+#@CSCIteam3
 consumer_key = "ThbfGVBrpRwMKu9FVgR6HjA1m"
 consumer_secret = "lGyzD69pQGupB4lTG3jWG8rszYmVN4CGjFPYGUBTr1EhKdiBxh"
 access_token = "1039183691510165505-IkoKTm8MopQ3PzYVmEgU2NdGmognPL"
@@ -14,13 +14,12 @@ access_token_secret = "jwWe8WqunRcmqKWgvYyDuUjkyotgfUddeLKcTHYz40ktP"
 
 #Tweepy authentication
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-auth.set_access_token(access_key, access_secret)
+auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
 
 
-# Zipcodes for testing
-#	Raleigh, NC 27834
-zipCode = "27834"
+# Raleigh, NC 27834
+zipCode = "27858"
 apiURL = "http://api.openweathermap.org/data/2.5/weather?zip=" + zipCode + "&appid=" + apiKey + "&units=imperial"
 
 #Get web request
@@ -38,4 +37,4 @@ description = response["weather"][0]["description"]
 #Print the forcast
 #message = "The weather in " + location + " (" + coord + ") is " + description + ".\nThe temperature is currently " + str(currentTemp) + " *F with a high of " + str(high) + " *F and a low of " + str(low) + " *F.\nThe wind speed is " + str(winds) + " MPH.")
 
-api.update_status(status="test")
+api.update_status(status="The weather in " + location + " (" + coord + ") is " + description + ".\nThe temperature is currently " + str(currentTemp) + " *F with a high of " + str(high) + " *F and a low of " + str(low) + " *F.\nThe wind speed is " + str(winds) + " MPH.")
