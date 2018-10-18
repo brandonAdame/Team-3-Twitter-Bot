@@ -19,11 +19,6 @@ api = tweepy.API(auth)
 
 
 # Zipcodes for testing
-# 	New York City 10001
-#	Miami, Fl 33101
-#	Greenville, NC 27834
-#	Dallas, Tx 75001
-#	Los Angeles, Ca 90001
 #	Raleigh, NC 27834
 zipCode = "27834"
 apiURL = "http://api.openweathermap.org/data/2.5/weather?zip=" + zipCode + "&appid=" + apiKey + "&units=imperial"
