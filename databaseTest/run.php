@@ -25,7 +25,7 @@ $newNextRunTime =  mysqli_real_escape_string($myConnection, $_GET['nextSendTime'
 
 	$tomorrow = new DateTime('tomorrow');
 
-	echo $tomorrow->format('Y-m-d H:i:s') . "\n";
+	//echo $tomorrow->format('Y-m-d H:i:s') . "\n";
 
 		if ($eventType == "localWeather"){
 			$result = mysqli_query($myConnection, "SELECT * FROM localWeather WHERE idNumber=$id LIMIT 1") or die(mysqli_error($myConnection));
