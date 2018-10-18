@@ -1,15 +1,32 @@
 import requests #Python HTTP for Humans.
+import feedparser
+import time
+import tweepy
 
 apiKey = "07a6ed1ad10a5c97fa9daa3c5babcaab"
-#Zipcodes for testing
-#####New York City 10001
-#####Miami, Fl 33101
-#####Greenville, NC 27834
-#####Dallas, Tx 75001
-#####Los Angeles, Ca 90001
-zipCode = "27834"
-apiURL = "http://api.openweathermap.org/data/2.5/weather?zip="+zipCode+"&appid="+apiKey+"&units=imperial"
 
+#Twitter keys
+#CSCIteam3
+consumer_key = "ThbfGVBrpRwMKu9FVgR6HjA1m"
+consumer_secret = "lGyzD69pQGupB4lTG3jWG8rszYmVN4CGjFPYGUBTr1EhKdiBxh"
+access_token = "1039183691510165505-IkoKTm8MopQ3PzYVmEgU2NdGmognPL"
+access_token_secret = "jwWe8WqunRcmqKWgvYyDuUjkyotgfUddeLKcTHYz40ktP"
+
+#Tweepy authentication
+auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+auth.set_access_token(access_key, access_secret)
+api = tweepy.API(auth)
+
+
+# Zipcodes for testing
+# 	New York City 10001
+#	Miami, Fl 33101
+#	Greenville, NC 27834
+#	Dallas, Tx 75001
+#	Los Angeles, Ca 90001
+#	Raleigh, NC 27834
+zipCode = "27834"
+apiURL = "http://api.openweathermap.org/data/2.5/weather?zip=" + zipCode + "&appid=" + apiKey + "&units=imperial"
 
 #Get web request
 response = requests.get(apiURL).json()
@@ -24,4 +41,6 @@ winds = response["wind"]["speed"]
 description = response["weather"][0]["description"]
 
 #Print the forcast
-print("The weather in " + location + " (" + coord + ") is " + description + ".  The temperature is currently " + str(currentTemp) + " *F with a high of " + str(high) + " *F and a low of " + str(low) + " *F.  The wind speed is " + str(winds) + " MPH.")
+#message = "The weather in " + location + " (" + coord + ") is " + description + ".\nThe temperature is currently " + str(currentTemp) + " *F with a high of " + str(high) + " *F and a low of " + str(low) + " *F.\nThe wind speed is " + str(winds) + " MPH.")
+
+api.update_status(status="test")
