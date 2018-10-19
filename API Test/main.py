@@ -4,8 +4,10 @@
 import requests 	#Python HTTP for Humans.
 import feedparser
 import time
-import tweepy
+import tweepy 		
 import zipcodes		#zipcodes database
+import schedule
+
 
 #=========================================================================================
 #										 API Keys
@@ -25,38 +27,47 @@ auth.set_access_token(twitter_access_key, twitter_access_key_secret)
 api = tweepy.API(auth)
 
 
-
 #=========================================================================================
-#									Implementation
+#								tweetGreenvilleWeather
 #=========================================================================================
-# 					Get weather for Greenville, NC 27858 and tweet it.
+# 					Get weather for Greenville, NC 27858 and tweets it.
 #-----------------------------------------------------------------------------------------
+def tweetGreenvilleWeather():
+	#Greenville, NC 27858
+	zipCode = "27858"
+	#Uses zipcode to get city name and state.
+	zipCodeInfo = zipcodes.matching(zipCode)
+	zipCodeInfo = zipCodeInfo[0]
 
-#Greenville, NC 27858
-zipCode = "27858"
-#Uses zipcode to get city name and state.
-zipCodeInfo = zipcodes.matching(zipCode)
-zipCodeInfo = zipCodeInfo[0]
+	#OpenWeatherMap API url
+	apiURL = "http://api.openweathermap.org/data/2.5/weather?zip=" + zipCode + "&appid=" + apiKey + "&units=imperial"
 
-#OpenWeatherMap API url
-apiURL = "http://api.openweathermap.org/data/2.5/weather?zip=" + zipCode + "&appid=" + apiKey + "&units=imperial"
+	#Get web request
+	response = requests.get(apiURL).json()
 
+	#Store in easy to use variables
+	currentTemp = response["main"]["temp"]
+	location 	= zipCodeInfo["city"].lower().title() +", "+ zipCodeInfo["state"]	
+	coord 		= str( response["coord"]["lon"] )+ ", " + str(response["coord"]["lat"])
+	high 		= response["main"]["temp_max"]
+	low 		= response["main"]["temp_min"]
+	winds 		= response["wind"]["speed"]
+	description = response["weather"][0]["description"]
 
-#Get web request
-response = requests.get(apiURL).json()
+	#Builds the forcast string
+	forcast = "The weather in " + location + " (" + coord + ") is " + description + ".\nThe temperature is currently " + str(currentTemp) + " *F with a high of " + str(high) + " *F and a low of " + str(low) + " *F.\nThe wind speed is " + str(winds) + " MPH."
 
-#Store in easy to use variables
-currentTemp = response["main"]["temp"]
-location 	= zipCodeInfo["city"].lower().title() +", "+ zipCodeInfo["state"]	
-coord 		= str( response["coord"]["lon"] )+ ", " + str(response["coord"]["lat"])
-high 		= response["main"]["temp_max"]
-low 		= response["main"]["temp_min"]
-winds 		= response["wind"]["speed"]
-description = response["weather"][0]["description"]
+	#Print the forcast
+	print(forcast)
+	#Tweet the forcast
+	api.update_status(status=forcast)
 
-#Print the forcast
-print("The weather in " + location + " (" + coord + ") is " + description + ".\nThe temperature is currently " + str(currentTemp) + " *F with a high of " + str(high) + " *F and a low of " + str(low) + " *F.\nThe wind speed is " + str(winds) + " MPH.")
+#=========================================================================================
+#										main
+#=========================================================================================
+#Everyday at 8am tweet Greenville weather
+schedule.every().day.at("08:00").do(tweetGreenvilleWeather)
 
-api.update_status(status="The weather in " + location + " (" + coord + ") is " + description + ".\nThe temperature is currently " + str(currentTemp) + " *F with a high of " + str(high) + " *F and a low of " + str(low) + " *F.\nThe wind speed is " + str(winds) + " MPH.")
-
-
+while True:
+    schedule.run_pending()
+    time.sleep(1)
