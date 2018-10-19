@@ -32,21 +32,22 @@ api = tweepy.API(auth)
 # 					Get weather for Greenville, NC 27858 and tweet it.
 #-----------------------------------------------------------------------------------------
 
-# Greenville, NC 27858
+#Greenville, NC 27858
 zipCode = "27858"
-apiURL = "http://api.openweathermap.org/data/2.5/weather?zip=" + zipCode + "&appid=" + apiKey + "&units=imperial"
-
-
 #Uses zipcode to get city name and state.
 zipCodeInfo = zipcodes.matching(zipCode)
 zipCodeInfo = zipCodeInfo[0]
+
+#OpenWeatherMap API url
+apiURL = "http://api.openweathermap.org/data/2.5/weather?zip=" + zipCode + "&appid=" + apiKey + "&units=imperial"
+
 
 #Get web request
 response = requests.get(apiURL).json()
 
 #Store in easy to use variables
 currentTemp = response["main"]["temp"]
-location 	= zipCodeInfo["city"] +", "+ zipCodeInfo["state"]	
+location 	= zipCodeInfo["city"].lower().title() +", "+ zipCodeInfo["state"]	
 coord 		= str( response["coord"]["lon"] )+ ", " + str(response["coord"]["lat"])
 high 		= response["main"]["temp_max"]
 low 		= response["main"]["temp_min"]
