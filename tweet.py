@@ -29,5 +29,5 @@ w.get_humidity()              # 87
 w.get_temperature('celsius')  # {'temp_max': 10.5, 'temp': 9.7, 'temp_min': 9.0}
 """
 
-phrase = 'it gon rain #hurricane'
+phrase = 'greetings from Greenville!'
 api.update_status(phrase)
