@@ -1,3 +1,3 @@
-from database.py as database
+import database.py as database
 
 print(getByID(1))
