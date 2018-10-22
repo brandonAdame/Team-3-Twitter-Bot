@@ -1,3 +1,3 @@
 import database as database
 
-print(getByID(1))
+print(database.getByID(1))
