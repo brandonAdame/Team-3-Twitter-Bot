@@ -1,16 +1,16 @@
 #=========================================================================================
-#										 Imports
+#                                        Imports
 #=========================================================================================
-import requests 	#Python HTTP for Humans.
+import requests     #Python HTTP for Humans.
 import feedparser	
 import time 		
-import tweepy 		#Twitter API
-import zipcodes		#zipcodes database
+import tweepy       #Twitter API
+import zipcodes     #zipcodes database
 import schedule		
 
 
 #=========================================================================================
-#										 API Keys
+#                                       API Keys
 #=========================================================================================
 #OpenWeatherMap Key
 apiKey = "07a6ed1ad10a5c97fa9daa3c5babcaab"
@@ -28,9 +28,9 @@ api = tweepy.API(auth)
 
 
 #=========================================================================================
-#								tweetGreenvilleWeather
+#                               tweetGreenvilleWeather
 #=========================================================================================
-# 					Get weather for Greenville, NC 27858 and tweets it.
+#                Get weather for Greenville, NC 27858 and tweets it.
 #-----------------------------------------------------------------------------------------
 def tweetGreenvilleWeather():
 	#Greenville, NC 27858
@@ -64,7 +64,7 @@ def tweetGreenvilleWeather():
 	api.update_status(status=forcast)
 
 #=========================================================================================
-#										main
+#                                      main
 #=========================================================================================
 #Everyday at 8am tweet Greenville weather
 schedule.every().day.at("08:00").do(tweetGreenvilleWeather)
