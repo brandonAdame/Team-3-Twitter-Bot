@@ -4,9 +4,9 @@
 import requests 	#Python HTTP for Humans.
 import feedparser
 import time
-import tweepy 		
+import tweepy 		#Twitter API
 import zipcodes		#zipcodes database
-import schedule
+import schedule		#
 
 
 #=========================================================================================
@@ -55,9 +55,10 @@ def tweetGreenvilleWeather():
 	description = response["weather"][0]["description"]
 
 	#Builds the forcast string
-	forcast = "The weather in " + location + " (" + coord + ") is " + description + ".\nThe temperature is currently " + str(currentTemp) + " *F with a high of " + str(high) + " *F and a low of " + str(low) + " *F.\nThe wind speed is " + str(winds) + " MPH."
+	forcast = "The weather in " + location + " is " + description + ".\nThe temperature is currently " + str(currentTemp) + " *F with a high of " + str(high) + " *F and a low of " + str(low) + " *F.\nThe wind speed is " + str(winds) + " MPH."
 
 	#Print the forcast
+	print("Coordinates: (" + coord + ")")
 	print(forcast)
 	#Tweet the forcast
 	api.update_status(status=forcast)
@@ -67,6 +68,9 @@ def tweetGreenvilleWeather():
 #=========================================================================================
 #Everyday at 8am tweet Greenville weather
 schedule.every().day.at("08:00").do(tweetGreenvilleWeather)
+
+#Manually tweet
+#tweetGreenvilleWeather()
 
 while True:
     schedule.run_pending()
