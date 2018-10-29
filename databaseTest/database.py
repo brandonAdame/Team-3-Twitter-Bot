@@ -195,7 +195,7 @@ def updateEventTime(id, nextSendTime):
     r = requests.get(apiURL)
     return r.json()["events"][0]
 
-'''
+"""
 ##DEMOS
 print("\nDemos\n")
 
@@ -220,4 +220,4 @@ print("")
 #DELETING EVENTS (Uncomment these and change parameters to test.)
 #print("Remove an event by ID, unsub(24): " + str(unsub(24)))
 #print("Remove all events a user is signed up for, unsubAll(\"DanielLeeMeeks2\"): " + str(unsubAll("DanielLeeMeeks2")))
-'''
+"""
