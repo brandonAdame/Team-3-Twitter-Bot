@@ -1,5 +1,5 @@
 """
-Author: Brandon Gachuz
+Author: 
 Init Date: 10/29/18
 
 dmParser will parse through a twitter users' DM for
