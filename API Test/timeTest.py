@@ -2,10 +2,6 @@ import datetime
 import time
 import tweepy
 
-while True:
-  print(datetime.datetime.now())
-  tweet("The time is " + str(datetime.datetime.now()) );
-  time.sleep(60)
 
 def tweet(message):
   try:
@@ -25,3 +21,8 @@ def tweet(message):
     api.update_status(status=message)
   except:
     print("There was an error while tweeting.")
+
+while True:
+  print(datetime.datetime.now())
+  tweet("The time is " + str(datetime.datetime.now()) );
+  time.sleep(60)
