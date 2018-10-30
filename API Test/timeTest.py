@@ -2,7 +2,7 @@ import datetime
 import time
 import tweepy
 
-while (true)
+while True:
   print(datetime.datetime.now())
   tweet("The time is " + str(datetime.datetime.now()) );
   time.sleep(60)
