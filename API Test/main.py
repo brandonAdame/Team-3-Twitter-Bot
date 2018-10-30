@@ -62,6 +62,10 @@ def getWeather(zipcode):
 #=========================================================================================
 def directMessage():
 	# Check for direct messages
+	dms = tweepy.Cursor(api.user_timeline, id="twitter")
+
+	print(dms)
+	# print(api.direct_messages())
 	# Bring in direct message data
 	# Set direct message format for subscribers
 	# Send data to database
@@ -92,6 +96,7 @@ schedule.every().day.at("08:00").do(tweetGreenvilleWeather)
 #tweetGreenvilleWeather()
 #Manually print weather
 #print(getWeather("27858"))
+directMessage() 
 
 while True:
     schedule.run_pending()
