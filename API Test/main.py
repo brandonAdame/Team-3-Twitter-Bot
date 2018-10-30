@@ -1,16 +1,16 @@
 #=========================================================================================
-#                                        Imports
+#										 Imports
 #=========================================================================================
-import requests     #Python HTTP for Humans.
-import feedparser	
-import time 		
-import tweepy       #Twitter API
-import zipcodes     #zipcodes database
-import schedule		
+import requests 	#Python HTTP for Humans.
+import feedparser
+import time
+import tweepy 		#Twitter API
+import zipcodes		#zipcodes database
+import schedule		#
 
 
 #=========================================================================================
-#                                       API Keys
+#										 API Keys
 #=========================================================================================
 #OpenWeatherMap Key
 apiKey = "07a6ed1ad10a5c97fa9daa3c5babcaab"
@@ -28,19 +28,17 @@ api = tweepy.API(auth)
 
 
 #=========================================================================================
-#                               tweetGreenvilleWeather
+#                                   getWeather
 #=========================================================================================
-#                Get weather for Greenville, NC 27858 and tweets it.
+#                        Param zipcode must be a string
 #-----------------------------------------------------------------------------------------
-def tweetGreenvilleWeather():
-	#Greenville, NC 27858
-	zipCode = "27858"
+def getWeather(zipcode):
 	#Uses zipcode to get city name and state.
-	zipCodeInfo = zipcodes.matching(zipCode)
+	zipCodeInfo = zipcodes.matching(zipcode)
 	zipCodeInfo = zipCodeInfo[0]
 
 	#OpenWeatherMap API url
-	apiURL = "http://api.openweathermap.org/data/2.5/weather?zip=" + zipCode + "&appid=" + apiKey + "&units=imperial"
+	apiURL = "http://api.openweathermap.org/data/2.5/weather?zip=" + zipcode + "&appid=" + apiKey + "&units=imperial"
 
 	#Get web request
 	response = requests.get(apiURL).json()
@@ -48,7 +46,7 @@ def tweetGreenvilleWeather():
 	#Store in easy to use variables
 	currentTemp = response["main"]["temp"]
 	location 	= zipCodeInfo["city"].lower().title() +", "+ zipCodeInfo["state"]	
-	coord 		= str( response["coord"]["lon"] )+ ", " + str(response["coord"]["lat"])
+	#coord 		= str(response["coord"]["lon"] )+ ", " + str(response["coord"]["lat"])
 	high 		= response["main"]["temp_max"]
 	low 		= response["main"]["temp_min"]
 	winds 		= response["wind"]["speed"]
@@ -56,21 +54,49 @@ def tweetGreenvilleWeather():
 
 	#Builds the forcast string
 	forcast = "The weather in " + location + " is " + description + ".\nThe temperature is currently " + str(currentTemp) + " *F with a high of " + str(high) + " *F and a low of " + str(low) + " *F.\nThe wind speed is " + str(winds) + " MPH."
+	#Send back forcast
+	return forcast
 
-	#Print the forcast
-	print("Coordinates: (" + coord + ")")
+#=========================================================================================
+#                                  directMessage
+#=========================================================================================
+def directMessage():
+	# Check for direct messages
+	dms = tweepy.Cursor(api.user_timeline, id="twitter")
+
+	print(dms)
+	# print(api.direct_messages())
+	# Bring in direct message data
+	# Set direct message format for subscribers
+	# Send data to database
+	# Send direct message to subscriber
+	return 0
+
+#=========================================================================================
+#                            tweetGreenvilleWeather
+#=========================================================================================
+#                Get weather for Greenville, NC 27858 and tweets it.
+#-----------------------------------------------------------------------------------------
+def tweetGreenvilleWeather():
+	#Greenville, NC 27858
+	zipcode = "27858"
+	#Gets the forcast
+	forcast = getWeather(zipcode)
 	print(forcast)
 	#Tweet the forcast
 	api.update_status(status=forcast)
 
 #=========================================================================================
-#                                      main
+#										main
 #=========================================================================================
-#Everyday at 8am EDT (12pm GMT) tweet Greenville weather
-schedule.every().day.at("12:00").do(tweetGreenvilleWeather)
+#Everyday at 8am tweet Greenville weather
+schedule.every().day.at("08:00").do(tweetGreenvilleWeather)
 
 #Manually tweet
 #tweetGreenvilleWeather()
+#Manually print weather
+#print(getWeather("27858"))
+directMessage() 
 
 while True:
     schedule.run_pending()
