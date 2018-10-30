@@ -1,4 +1,4 @@
-# Team-3-Twitter-Bot
+# 💧 Team 3 Twitter Bot 🌦
 A twitter bot that messages users the weather based on conditions that they specifies. 
 
 
@@ -9,7 +9,7 @@ A twitter bot that messages users the weather based on conditions that they spec
 
 2. Install dependencies.
 
-   ```
+   ```Bash
    pip install tweepy
    pip install pyown
    pip install requests
@@ -59,13 +59,13 @@ Weeks:
 
 ## Project Contributers
 
-[Trevor](https://github.com/Downeyt16)
+💧 [Trevor](https://github.com/Downeyt16)
 
-[Nick](https://github.com/ellisn15)
+💧 [Nick](https://github.com/ellisn15)
 
-[Daniel](https://github.com/DanielLeeMeeks)
+💧 [Daniel](https://github.com/DanielLeeMeeks)
 
-[Jared](https://githib.com/phillipsjar12)
+💧 [Jared](https://githib.com/phillipsjar12)
 
-[Brandon](https://github.com/brandonAdame)
+💧 [Brandon](https://github.com/brandonAdame)
 

@@ -66,8 +66,8 @@ def tweetGreenvilleWeather():
 #=========================================================================================
 #                                      main
 #=========================================================================================
-#Everyday at 8am tweet Greenville weather
-schedule.every().day.at("08:00").do(tweetGreenvilleWeather)
+#Everyday at 8am EDT (12pm GMT) tweet Greenville weather
+schedule.every().day.at("12:00").do(tweetGreenvilleWeather)
 
 #Manually tweet
 #tweetGreenvilleWeather()
