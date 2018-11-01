@@ -52,19 +52,17 @@ def getWeather(zipcode):
 	winds 		= response["wind"]["speed"]
 	description = response["weather"][0]["description"]
 
-	#Builds the forcast string
-	forcast = "The weather in " + location + " is " + description + ".\nThe temperature is currently " + str(currentTemp) + " *F with a high of " + str(high) + " *F and a low of " + str(low) + " *F.\nThe wind speed is " + str(winds) + " MPH."
-	#Send back forcast
-	return forcast
+	#Builds the forecast string
+	forecast = "The weather in " + location + " is " + description + ".\nThe temperature is currently " + str(currentTemp) + " *F with a high of " + str(high) + " *F and a low of " + str(low) + " *F.\nThe wind speed is " + str(winds) + " MPH."
+	#Send back forecast
+	return forecast
 
 #=========================================================================================
 #                                  directMessage
 #=========================================================================================
 def directMessage():
 	# Check for direct messages
-	dms = tweepy.Cursor(api.user_timeline, id="twitter")
-
-	print(dms)
+	
 	# print(api.direct_messages())
 	# Bring in direct message data
 	# Set direct message format for subscribers
@@ -80,11 +78,11 @@ def directMessage():
 def tweetGreenvilleWeather():
 	#Greenville, NC 27858
 	zipcode = "27858"
-	#Gets the forcast
-	forcast = getWeather(zipcode)
-	print(forcast)
-	#Tweet the forcast
-	api.update_status(status=forcast)
+	#Gets the forecast
+	forecast = getWeather(zipcode)
+	print(forecast)
+	#Tweet the forecast
+	api.update_status(status=forecast)
 
 #=========================================================================================
 #										main
