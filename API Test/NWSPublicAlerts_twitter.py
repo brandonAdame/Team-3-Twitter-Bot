@@ -9,10 +9,10 @@ tweetSkipper = False;
 def tweet(message, link):
     try:
         #@DanielLeeMeeks2
-        consumer_key = "U01EcJ8sqBgSaafvPW1u3nHzR"
-        consumer_secret = "tt9UdUqKXHVDpJguTyS1fKhTmPxUHq2VRKaqg056ZirIGH3tgA"
-        access_key = "3904219755-szrud8F89KgaAPLzjXpKbIWIvVvIqrkeOXLd1vd"
-        access_secret = "DBwqE09xXK69tHHlqqv9pFwY0u2V3APoSOjRLVuPJO8Kn"
+        consumer_key = "ThbfGVBrpRwMKu9FVgR6HjA1m"
+        consumer_secret = "lGyzD69pQGupB4lTG3jWG8rszYmVN4CGjFPYGUBTr1EhKdiBxh"
+        access_key = "1039183691510165505-IkoKTm8MopQ3PzYVmEgU2NdGmognPL"
+        access_secret = "jwWe8WqunRcmqKWgvYyDuUjkyotgfUddeLKcTHYz40ktP"
 
         auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
         auth.set_access_token(access_key, access_secret)
@@ -21,7 +21,8 @@ def tweet(message, link):
             message = message[0:275] + "...";
         if (len(message) + len(link) + 5 > 280 ):
             message = message[0:280-len(link)-5] + "..."
-        api.update_status(status=message + "\n" + link)
+        #api.update_status(status=message + "\n" + link)
+        print(message)
     except:
         print("There was an error while tweeting.")
 
@@ -32,7 +33,8 @@ while True:
     ##get weather Alerts from The National Weather Service
     ##https://alerts.weather.gov/
     ##weatherAlerts = feedparser.parse("https://alerts.weather.gov/cap/us.php?x=0")
-    weatherAlerts = feedparser.parse("https://alerts.weather.gov/cap/nc.php?x=0")
+    weatherAlerts = feedparser.parse("https://alerts.weather.gov/cap/wwaatmget.php?x=NCC147&y=0")
+    #weatherAlerts = feedparser.parse("https://alerts.weather.gov/cap/nc.php?x=0")
 
     ##print(weatherAlerts.entries[1].keys())
 
@@ -43,24 +45,30 @@ while True:
     count_skipped = 0
     count_alerted = 0
 
+    print(weatherAlerts)
+
     ##Look at every item in the alerts rss feed.
     for entry in weatherAlerts.entries:
         ##if the item is new add the item to the alerts list and print data about it.
-        if (entry.id + "\n") not in alert_array:
-            print("[" + entry.cap_event + "] " + entry.summary)
-            if (tweetSkipper):
-                tweet(entry.summary, entry.link)
+        #print(entry.id)
+        if (entry.id != "https://alerts.weather.gov/cap/wwaatmget.php?x=NCC147&y=0"):
+            if (entry.id + "\n") not in alert_array:
+                print("[" + entry.title + "] " + entry.summary)
+                if (tweetSkipper):
+                    tweet(entry.summary, entry.link)
+                else:
+                    print("This is the first load, nothing will be tweeted.")
+                    tweetSkipper = True
+                text_file = open("alertList.txt", "a")
+                text_file.write("\n" + entry.id)
+                text_file.close()
+                count_alerted += 1
+            ##if the item is old skip it
             else:
-                print("This is the first load, nothing will be tweeted.")
-                tweetSkipper = True
-            text_file = open("alertList.txt", "a")
-            text_file.write("\n" + entry.id)
-            text_file.close()
-            count_alerted += 1
-        ##if the item is old skip it
+                ##print("Alert ID " + entry.id + " has already ran and will be skipped.")
+                count_skipped += 1
         else:
-            ##print("Alert ID " + entry.id + " has already ran and will be skipped.")
-            count_skipped += 1
+            print("There are no active watches, warnings or advisories")
 
     print("\n"+str(count_alerted) + " new alerts found.")
     print(str(count_skipped) + " old alerts skipped.\n")
