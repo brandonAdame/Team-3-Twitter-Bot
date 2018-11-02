@@ -1,12 +1,13 @@
 from TwitterAPI import TwitterAPI
 api = TwitterAPI("yVFov91a4AnsnXmbh45MBov9i", "Fb8HDKzUv2sd68nOaJKU2EimlyR97CKjLAYKIyhNvnwG4H094X", "3904219755-6SWMiMku6P6H6r9jv83ql0NQ8TcxIsC8cJfGUUu", "OZzMalAuh3Kn6f2lxdVNU8Q0HjYbmmvoLBG1qt0bh9D62")
 
+#Get DMs from last 30 days
 r = api.request('direct_messages/events/list')
 print(r.status_code)
 print(r.json())
 
 
-##Get DMs
+##Get one DM by ID
 r = api.request('direct_messages/events/show', {'id':'1058223541361926148'})
 print(r.status_code)
 print(r.json())
