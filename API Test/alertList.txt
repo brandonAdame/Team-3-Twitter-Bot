@@ -1,3 +1,1 @@
 https://alerts.weather.gov/cap/wwaatmget.php?x=NCC147&amp;y=0
-https://alerts.weather.gov/cap/wwacapget.php?x=NC125AC75B3F68.FloodWarning.125AC76AFAC0NC.RAHFLSRAH.750ce28715d1e732c990bf3e5e73b2ca
-https://alerts.weather.gov/cap/wwacapget.php?x=NC125AC75B3F68.FloodWarning.125AC76AFAC0NC.RAHFLSRAH.750ce28715d1e732c990bf3e5e73b2ca

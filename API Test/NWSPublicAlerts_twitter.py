@@ -21,7 +21,7 @@ def tweet(message, link):
             message = message[0:275] + "...";
         if (len(message) + len(link) + 5 > 280 ):
             message = message[0:280-len(link)-5] + "..."
-        #api.update_status(status=message + "\n" + link)
+        api.update_status(status=message + "\n" + link)
         print(message)
     except:
         print("There was an error while tweeting.")
