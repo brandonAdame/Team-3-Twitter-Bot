@@ -4,7 +4,6 @@
     <list default="true" id="81c8bbdc-7811-451e-8d69-00ae7b23e77d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../API Test/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../API Test/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../API Test/NWSPublicAlerts_twitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/../API Test/NWSPublicAlerts_twitter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../API Test/alertList.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../API Test/alertList.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -53,8 +52,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="25" column="89" selection-start-line="25" selection-start-column="89" selection-end-line="25" selection-end-column="89" />
+            <state relative-caret-position="520">
+              <caret line="26" column="89" selection-start-line="26" selection-start-column="89" selection-end-line="26" selection-end-column="89" />
             </state>
           </provider>
         </entry>
@@ -77,7 +76,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-4" />
     <option name="y" value="-4" />
     <option name="width" value="1928" />
@@ -164,7 +163,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="-4" width="1928" height="1036" extended-state="7" />
+    <frame x="-4" y="-4" width="1928" height="1036" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.253212" />
@@ -199,8 +198,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="25" column="89" selection-start-line="25" selection-start-column="89" selection-end-line="25" selection-end-column="89" />
+        <state relative-caret-position="520">
+          <caret line="26" column="89" selection-start-line="26" selection-start-column="89" selection-end-line="26" selection-end-column="89" />
         </state>
       </provider>
     </entry>
