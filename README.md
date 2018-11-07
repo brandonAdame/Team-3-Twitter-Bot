@@ -52,20 +52,20 @@ Weeks:
 - [Request](https://developer.mozilla.org/en-US/docs/Web/API/Request) - The request interface of the Fetch API represents a resource request.
 - [Beautiful Soup Documentation](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) - Used for pulling data out of HTML and XML files.
 - [virtulaenv](https://virtualenv.pypa.io/en/stable/) - Is a tool to create isolated Python environments.
-- zipcodes - 
-- schedule - 
-- time -
+- [zipcodes](https://pypi.org/project/zipcodes/) - A lightweight U.S. zip-code validation package for Python (2 and 3).
+- [schedule](https://pypi.org/project/schedule/) - Python job scheduling for humans. 
+- [time](https://docs.python.org/2/library/time.html) - This module provides various time-related functions.
 
 
 ## Project Contributers
 
-[Trevor](https://github.com/Downeyt16)
+- [Trevor](https://github.com/Downeyt16)
 
-[Nick](https://github.com/ellisn15)
+- [Nick](https://github.com/ellisn15)
 
-[Daniel](https://github.com/DanielLeeMeeks)
+- [Daniel](https://github.com/DanielLeeMeeks)
 
-[Jared](https://githib.com/phillipsjar12)
+- [Jared](https://githib.com/phillipsjar12)
 
-[Brandon](https://github.com/brandonAdame)
+- [Brandon](https://github.com/brandonAdame)
 
