@@ -6,7 +6,7 @@ import feedparser
 import time
 import tweepy 		#Twitter API
 import zipcodes		#zipcodes database
-import schedule		#
+import schedule		
 
 
 #=========================================================================================
@@ -61,13 +61,9 @@ def getWeather(zipcode):
 #                                  directMessage
 #=========================================================================================
 def directMessage():
-	# Check for direct messages
-	
-	# print(api.direct_messages())
-	# Bring in direct message data
-	# Set direct message format for subscribers
-	# Send data to database
-	# Send direct message to subscriber
+
+	# See Team-3-Twitter-Bot/TwitterAPI_Test/test.py
+
 	return 0
 
 #=========================================================================================
