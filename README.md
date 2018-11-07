@@ -10,11 +10,12 @@ A twitter bot that messages users the weather based on conditions that they spec
 2. Install dependencies.
 
    ```
-   pip install tweepy
-   pip install pyown
    pip install requests
-   pip install bs4
-   pip install virtulaenv
+   pip install feedparser
+   pip install time
+   pip install tweepy
+   pip install schedule
+   pip install zipcodes
    ```
 
 3. Activate virtual environment: `source Team-3-Twitter-Bot/bin/activate`
@@ -30,10 +31,10 @@ The project will be based on a weekly sprints. The project will be due on the la
 
 Weeks:
 
-1. Build the direct messaging feature
+1. Build weather module
 2. Build database
 3. Database testing
-4. Build weather module
+4. Build the direct messaging feature
 
 - Build clothing suggestion module
 - Build daily quote module
@@ -47,14 +48,13 @@ Weeks:
 ## Built With
 
 - [Tweepy](http://docs.tweepy.org/en/v3.5.0/getting_started.html) - Accessing the Twitter API.
-
 - [OpenWeatherMap](https://openweathermap.org/api) - Pulls current weather data.
-
 - [Request](https://developer.mozilla.org/en-US/docs/Web/API/Request) - The request interface of the Fetch API represents a resource request.
-
 - [Beautiful Soup Documentation](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) - Used for pulling data out of HTML and XML files.
-
 - [virtulaenv](https://virtualenv.pypa.io/en/stable/) - Is a tool to create isolated Python environments.
+- zipcodes - 
+- schedule - 
+- time -
 
 
 ## Project Contributers
