@@ -1,4 +1,4 @@
-# 💧 Team 3 Twitter Bot 🌦
+# Team-3-Twitter-Bot
 A twitter bot that messages users the weather based on conditions that they specifies. 
 
 
@@ -9,12 +9,13 @@ A twitter bot that messages users the weather based on conditions that they spec
 
 2. Install dependencies.
 
-   ```Bash
-   pip install tweepy
-   pip install pyown
+   ```
    pip install requests
-   pip install bs4
-   pip install virtulaenv
+   pip install feedparser
+   pip install time
+   pip install tweepy
+   pip install schedule
+   pip install zipcodes
    ```
 
 3. Activate virtual environment: `source Team-3-Twitter-Bot/bin/activate`
@@ -30,10 +31,10 @@ The project will be based on a weekly sprints. The project will be due on the la
 
 Weeks:
 
-1. Build the direct messaging feature
+1. Build weather module
 2. Build database
 3. Database testing
-4. Build weather module
+4. Build the direct messaging feature
 
 - Build clothing suggestion module
 - Build daily quote module
@@ -46,26 +47,25 @@ Weeks:
 
 ## Built With
 
-- [Tweepy](http://docs.tweepy.org/en/v3.5.0/api.html#api-reference) - Accessing the Twitter API.
-
+- [Tweepy](http://docs.tweepy.org/en/v3.5.0/getting_started.html) - Accessing the Twitter API.
 - [OpenWeatherMap](https://openweathermap.org/api) - Pulls current weather data.
-
 - [Request](https://developer.mozilla.org/en-US/docs/Web/API/Request) - The request interface of the Fetch API represents a resource request.
-
 - [Beautiful Soup Documentation](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) - Used for pulling data out of HTML and XML files.
-
 - [virtulaenv](https://virtualenv.pypa.io/en/stable/) - Is a tool to create isolated Python environments.
+- [zipcodes](https://pypi.org/project/zipcodes/) - A lightweight U.S. zip-code validation package for Python (2 and 3).
+- [schedule](https://pypi.org/project/schedule/) - Python job scheduling for humans. 
+- [time](https://docs.python.org/2/library/time.html) - This module provides various time-related functions.
 
 
 ## Project Contributers
 
-💧 [Trevor](https://github.com/Downeyt16)
+- [Trevor](https://github.com/Downeyt16)
 
-💧 [Nick](https://github.com/ellisn15)
+- [Nick](https://github.com/ellisn15)
 
-💧 [Daniel](https://github.com/DanielLeeMeeks)
+- [Daniel](https://github.com/DanielLeeMeeks)
 
-💧 [Jared](https://githib.com/phillipsjar12)
+- [Jared](https://githib.com/phillipsjar12)
 
-💧 [Brandon](https://github.com/brandonAdame)
+- [Brandon](https://github.com/brandonAdame)
 
