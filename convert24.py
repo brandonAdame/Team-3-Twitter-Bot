@@ -9,7 +9,7 @@ def convert24(str1):
     if str1[-2:] == "AM" and str1[:2] == "12": 
         return "00" + str1[2:-2] 
           
-    # remove the AM     
+    # remove the AM  
     elif str1[-2:] == "AM": 
         return str1[:-2] 
       
