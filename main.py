@@ -8,9 +8,8 @@ import tweepy 		#Twitter API
 import zipcodes		#zipcodes database
 import schedule		
 import datetime
-import bs4
 from requests import get
-import json
+from bs4 import BeautifulSoup
 
 
 #=========================================================================================
@@ -31,9 +30,76 @@ auth.set_access_token(twitter_access_key, twitter_access_key_secret)
 api = tweepy.API(auth)
 
 
+url = "https://www.brainyquote.com/quote_of_the_day"
+
+#=========================================================================================
+#                            		get_soup
+#=========================================================================================
+# File: brainyquote.py
+# Author: Brandon Adame Gachuz
+# Init date: 9/28/2018
+# Last Updated: 9/29/2018
+#-----------------------------------------------------------------------------------------
+def get_soup(url):
+    response = get(url)
+    html_soup = BeautifulSoup(response.text, 'html.parser')
+    return html_soup
+
+#=========================================================================================
+#                            get_len_quote_containers
+#=========================================================================================
+# File: brainyquote.py
+# Author: Brandon Adame Gachuz
+# Init date: 9/28/2018
+# Last Updated: 9/29/2018
+#-----------------------------------------------------------------------------------------
+
+def get_len_quote_containers(url):
+    html_soup = get_soup(url)
+
+    # gets types of quotes available
+    quote_containers = html_soup.find_all('h2', class_ = 'qotd-h2') 
+    print(quote_containers)  # displays categories of quotes
+
+    return len(quote_containers)
+
+
+#=========================================================================================
+#                                get_daily_quote
+#=========================================================================================
+# File: brainyquote.py
+# Author: Brandon Adame Gachuz
+# Init date: 9/28/2018
+# Last Updated: 9/29/2018
+#-----------------------------------------------------------------------------------------
+def get_daily_quote(url):
+    """
+    This method gets the daily quote and author
+    from brainyquote.com
+    """
+    html_soup = get_soup(url)
+    dq_containers = html_soup.find_all('div', class_='clearfix')
+    first_quote = dq_containers[0]
+    # print(first_quote)
+
+    # accessing the dq text
+    dq = first_quote.a.text
+
+    # accessing the dq author text
+    author_containers = first_quote.find_all('a')
+    author = author_containers[1].text
+
+    # print("{}\n\t-{}".format(dq, author))
+    return "{}\n\t-{}".format(dq, author)
+
+
 #=========================================================================================
 #                                  getHighLows
 #=========================================================================================
+# Author: Nichoas Ellis
+# Init date:
+# Last Updated:
+#-----------------------------------------------------------------------------------------
 def getHighLows(city, state, zipcode):
 
 	# Get the data
@@ -53,11 +119,12 @@ def getHighLows(city, state, zipcode):
 	print(data)
 
 
-
 #=========================================================================================
 #                                   getWeather
 #=========================================================================================
-#                        Param zipcode must be a string
+# Author: Nicholas Ellis
+# Init date: 
+# Last Updated: 
 #-----------------------------------------------------------------------------------------
 def getWeather(zipcode):
 	# Uses zipcode to get city name and state.
@@ -95,6 +162,10 @@ def getWeather(zipcode):
 #=========================================================================================
 #                                  directMessage
 #=========================================================================================
+# Author:
+# Init date:
+# Last Updated:
+#-----------------------------------------------------------------------------------------
 def directMessage():
 
 	# See Team-3-Twitter-Bot/TwitterAPI_Test/test.py
@@ -104,7 +175,9 @@ def directMessage():
 #=========================================================================================
 #                            tweetGreenvilleWeather
 #=========================================================================================
-#                Get weather for Greenville, NC 27858 and tweets it.
+# Author: Nicholas Ellis
+# Init date:
+# Last Updated:
 #-----------------------------------------------------------------------------------------
 def tweetGreenvilleWeather():
 	# Greenville, NC 27858
@@ -118,15 +191,20 @@ def tweetGreenvilleWeather():
 #=========================================================================================
 #										main
 #=========================================================================================
+# Author: Nicholas Ellis
+# Init date:
+# Last Updated:
+#-----------------------------------------------------------------------------------------
 # Everyday at 8am tweet Greenville weather
 schedule.every().day.at("08:00").do(tweetGreenvilleWeather)
+
 
 # Manually tweet
 #tweetGreenvilleWeather()
 # Manually print weather
 #print(getWeather("27858"))
 
-print(dailyQuote)
+print(get_daily_quote(url))
 
 #getHighLows("Greenville", "NC", "27858")
 
