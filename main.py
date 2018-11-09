@@ -134,7 +134,6 @@ def getWeather(zipcode):
 	# OpenWeatherMap API current weather url
 	curURL = "http://api.openweathermap.org/data/2.5/weather?zip=" + zipcode + "&appid=" + apiKey + "&units=imperial"
 
-
 	# Get curURL web request
 	curResponse = requests.get(curURL).json()
 
