@@ -53,11 +53,11 @@ while True:
         #print(entry.id)
         if (entry.id != "https://alerts.weather.gov/cap/wwaatmget.php?x=NCC147&y=0"):
             if (entry.id + "\n") not in alert_array:
-                print("[" + str(datetime.datetime.now() +", API Test/NWSPublicAlerts_twitter.py] (" + entry.title + ") " + entry.summary)
+                print("[" + str(datetime.datetime.now()) +", API Test/NWSPublicAlerts_twitter.py] (" + entry.title + ") " + entry.summary)
                 if (tweetSkipper):
                     tweet(entry.summary, entry.link)
                 else:
-                    print("[" + str(datetime.datetime.now() +", API Test/NWSPublicAlerts_twitter.py] This is the first load, nothing will be tweeted.")
+                    print("[" + str(datetime.datetime.now()) +", API Test/NWSPublicAlerts_twitter.py] This is the first load, nothing will be tweeted.")
                     tweetSkipper = True
                 text_file = open("alertList.txt", "a")
                 text_file.write("\n" + entry.id)
@@ -65,13 +65,13 @@ while True:
                 count_alerted += 1
             ##if the item is old skip it
             else:
-                ##print("[" + str(datetime.datetime.now() +", API Test/NWSPublicAlerts_twitter.py] Alert ID " + entry.id + " has already ran and will be skipped.")
+                ##print("[" + str(datetime.datetime.now()) +", API Test/NWSPublicAlerts_twitter.py] Alert ID " + entry.id + " has already ran and will be skipped.")
                 count_skipped += 1
         else:
-            print("[" + str(datetime.datetime.now() +", API Test/NWSPublicAlerts_twitter.py] There are no active watches, warnings or advisories")
+            print("[" + str(datetime.datetime.now()) +", API Test/NWSPublicAlerts_twitter.py] There are no active watches, warnings or advisories")
 
-    #print("[" + str(datetime.datetime.now() +", API Test/NWSPublicAlerts_twitter.py] "+str(count_alerted) + " new alerts found.")
-    #print("[" + str(datetime.datetime.now() +", API Test/NWSPublicAlerts_twitter.py] " + str(count_skipped) + " old alerts skipped.\n")
+    #print("[" + str(datetime.datetime.now()) +", API Test/NWSPublicAlerts_twitter.py] "+str(count_alerted) + " new alerts found.")
+    #print("[" + str(datetime.datetime.now()) +", API Test/NWSPublicAlerts_twitter.py] " + str(count_skipped) + " old alerts skipped.\n")
 
     #id = weatherAlerts.entries[i].id
     #published = weatherAlerts.entries[i].published
@@ -87,7 +87,7 @@ while True:
     #wait a minute before running again
     i = 6;
     while i > 0:
-        #print("[" + str(datetime.datetime.now() +", API Test/NWSPublicAlerts_twitter.py] Will check for new alerts in " + str(i*10) + " seconds.")
+        #print("[" + str(datetime.datetime.now()) +", API Test/NWSPublicAlerts_twitter.py] Will check for new alerts in " + str(i*10) + " seconds.")
         time.sleep(10)
         i -= 1;
 
