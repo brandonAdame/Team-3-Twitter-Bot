@@ -151,13 +151,14 @@ def getWeather(zipcode):
     description = curResponse["weather"][0]["description"]
 
     highLow = getHighLows(city, state, zipcode)[1][3]
-    high = highLow.split("°")[0]
+    ##print(chr(176))
+    high = highLow.split(chr(176))[0]
     #print(high)
-    low = highLow.split("°")[1]
+    low = highLow.split(chr(176))[1]
     #print(low)
 
     # Builds the forecast string
-    forecast = "The weather in " + city + ", " + state + " is " + description + ".\nThe temperature is currently " + str(currentTemp) + " °F with a high of " + str(high) + " °F and a low of " + str(low) + " °F.\nThe wind speed is " + str(winds) + " MPH."
+    forecast = "The weather in " + city + ", " + state + " is " + description + ".\nThe temperature is currently " + str(currentTemp) + " " + chr(176) + "F with a high of " + str(high) + " "+ chr(176) +"F and a low of " + str(low) + " "+ chr(176) +"F.\nThe wind speed is " + str(winds) + " MPH."
     # Send back forecast
     return forecast
 
@@ -189,7 +190,7 @@ def tweetGreenvilleWeather():
     forecast = getWeather(zipcode)
     print("[" + str(datetime.datetime.now()) +", API Test/NWSPublicAlerts_twitter.py] " + forecast)
     # Tweet the forecast
-    api.update_status(status=forecast)
+    #api.update_status(status=forecast)
 
 #=========================================================================================
 #										main
@@ -209,7 +210,7 @@ schedule.every().day.at("13:00").do(tweetGreenvilleWeather)
 
 print("[" + str(datetime.datetime.now()) +", API Test/NWSPublicAlerts_twitter.py] " + get_daily_quote(url))
 
-#tweetGreenvilleWeather()
+tweetGreenvilleWeather()
 
 #print (getHighLows("Greenville", "NC", "27858")[1][3])
 
