@@ -150,11 +150,11 @@ def getWeather(zipcode):
     winds 		= curResponse["wind"]["speed"]
     description = curResponse["weather"][0]["description"]
 
-    highLow = getHighLows(city, state, zipcode)[1][3]
+    highLow = getHighLows(city, state, zipcode)[1][3].encode('ascii', 'ignore').decode('ascii')
     ##print(chr(176))
-    high = highLow.split(",")[0]
+    high = highLow[0:len(highLow)-2]
     #print(high)
-    low = highLow.split(",")[0]
+    low = highLow[len(highLow)-2:len(highLow)]
     #print(low)
 
     # Builds the forecast string
