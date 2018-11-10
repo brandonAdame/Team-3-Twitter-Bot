@@ -102,21 +102,21 @@ def get_daily_quote(url):
 #-----------------------------------------------------------------------------------------
 def getHighLows(city, state, zipcode):
 
-	# Get the data
-	data = requests.get('https://weather.com/weather/tenday/l/'+city+'+'+state+'+'+zipcode+':4:US')
-	print('https://weather.com/weather/tenday/l/'+city+'+'+state+'+'+zipcode+':4:US')
+    # Get the data
+    data = requests.get('https://weather.com/weather/tenday/l/'+city+'+'+state+'+'+zipcode+':4:US')
+    print("[" + str(datetime.datetime.now()) +", API Test/NWSPublicAlerts_twitter.py] https://weather.com/weather/tenday/l/'+city+'+'+state+'+'+zipcode+':4:US")
 
-	# Load data into bs4
-	soup = BeautifulSoup(data.text, 'html.parser')
+    # Load data into bs4
+    soup = BeautifulSoup(data.text, 'html.parser')
 
-	# Get data within a specific element
-	data = []
-	div = soup.find('div', {'class': 'temp'})
-	for tr in soup.find_all('tr'):
-		values = [td.text for td in tr.find_all('td')]
-		data.append(values)
+    # Get data within a specific element
+    data = []
+    div = soup.find('div', {'class': 'temp'})
+    for tr in soup.find_all('tr'):
+        values = [td.text for td in tr.find_all('td')]
+        data.append(values)
 
-	print(data)
+    return (data)
 
 
 #=========================================================================================
@@ -127,36 +127,39 @@ def getHighLows(city, state, zipcode):
 # Last Updated: 
 #-----------------------------------------------------------------------------------------
 def getWeather(zipcode):
-	# Uses zipcode to get city name and state.
-	zipCodeInfo = zipcodes.matching(zipcode)
-	zipCodeInfo = zipCodeInfo[0]
+    # Uses zipcode to get city name and state.
+    zipCodeInfo = zipcodes.matching(zipcode)
+    zipCodeInfo = zipCodeInfo[0]
 
-	# OpenWeatherMap API current weather url
-	curURL = "http://api.openweathermap.org/data/2.5/weather?zip=" + zipcode + "&appid=" + apiKey + "&units=imperial"
+    # OpenWeatherMap API current weather url
+    curURL = "http://api.openweathermap.org/data/2.5/weather?zip=" + zipcode + "&appid=" + apiKey + "&units=imperial"
 
 
-	# Get curURL web request
-	curResponse = requests.get(curURL).json()
+    # Get curURL web request
+    curResponse = requests.get(curURL).json()
 
-	# Store in easy to use variables
-	currentTemp = curResponse["main"]["temp"]
-	city 		= zipCodeInfo["city"].lower().title()
-	state 		= zipCodeInfo["state"]
+    # Store in easy to use variables
+    currentTemp = curResponse["main"]["temp"]
+    city 		= zipCodeInfo["city"].lower().title()
+    state 		= zipCodeInfo["state"]
 
-	# Call getHighLows
-	#high 		= curResponse["main"]["temp_max"]
-	#low 		= curResponse["main"]["temp_min"]
+    # Call getHighLows
+    #high 		= curResponse["main"]["temp_max"]
+    #low 		= curResponse["main"]["temp_min"]
 
-	winds 		= curResponse["wind"]["speed"]
-	description = curResponse["weather"][0]["description"]
+    winds 		= curResponse["wind"]["speed"]
+    description = curResponse["weather"][0]["description"]
 
-	print(high)
-	print(low)
+    highLow = getHighLows(city, state, zipcode)[1][3]
+    high = highLow.split("°")[0]
+    #print(high)
+    low = highLow.split("°")[1]
+    #print(low)
 
-	# Builds the forecast string
-	forecast = "The weather in " + city + ", " + state + " is " + description + ".\nThe temperature is currently " + str(currentTemp) + " *F with a high of " + str(high) + " *F and a low of " + str(low) + " *F.\nThe wind speed is " + str(winds) + " MPH."
-	# Send back forecast
-	return forecast
+    # Builds the forecast string
+    forecast = "The weather in " + city + ", " + state + " is " + description + ".\nThe temperature is currently " + str(currentTemp) + " °F with a high of " + str(high) + " °F and a low of " + str(low) + " °F.\nThe wind speed is " + str(winds) + " MPH."
+    # Send back forecast
+    return forecast
 
 
 #=========================================================================================
@@ -168,9 +171,9 @@ def getWeather(zipcode):
 #-----------------------------------------------------------------------------------------
 def directMessage():
 
-	# See Team-3-Twitter-Bot/TwitterAPI_Test/test.py
+    # See Team-3-Twitter-Bot/TwitterAPI_Test/test.py
 
-	return 0
+    return 0
 
 #=========================================================================================
 #                            tweetGreenvilleWeather
@@ -180,13 +183,13 @@ def directMessage():
 # Last Updated:
 #-----------------------------------------------------------------------------------------
 def tweetGreenvilleWeather():
-	# Greenville, NC 27858
-	zipcode = "27858"
-	# Gets the forecast
-	forecast = getWeather(zipcode)
-	print(forecast)
-	# Tweet the forecast
-	api.update_status(status=forecast)
+    # Greenville, NC 27858
+    zipcode = "27858"
+    # Gets the forecast
+    forecast = getWeather(zipcode)
+    print("[" + str(datetime.datetime.now()) +", API Test/NWSPublicAlerts_twitter.py] " + forecast)
+    # Tweet the forecast
+    api.update_status(status=forecast)
 
 #=========================================================================================
 #										main
@@ -195,8 +198,8 @@ def tweetGreenvilleWeather():
 # Init date:
 # Last Updated:
 #-----------------------------------------------------------------------------------------
-# Everyday at 8am tweet Greenville weather
-schedule.every().day.at("08:00").do(tweetGreenvilleWeather)
+# Everyday at 8am (13:00 GMT) tweet Greenville weather
+schedule.every().day.at("13:00").do(tweetGreenvilleWeather)
 
 
 # Manually tweet
@@ -204,7 +207,11 @@ schedule.every().day.at("08:00").do(tweetGreenvilleWeather)
 # Manually print weather
 #print(getWeather("27858"))
 
-print(get_daily_quote(url))
+print("[" + str(datetime.datetime.now()) +", API Test/NWSPublicAlerts_twitter.py] " + get_daily_quote(url))
+
+#tweetGreenvilleWeather()
+
+#print (getHighLows("Greenville", "NC", "27858")[1][3])
 
 #getHighLows("Greenville", "NC", "27858")
 

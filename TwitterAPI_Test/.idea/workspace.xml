@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="81c8bbdc-7811-451e-8d69-00ae7b23e77d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../API Test/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../API Test/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../API Test/NWSPublicAlerts_twitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/../API Test/NWSPublicAlerts_twitter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,7 +17,7 @@
     <session id="1094419525">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.39" value="1" />
           <entry key="project.opened" value="2" />
@@ -164,7 +162,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1928" height="1036" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.253212" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
