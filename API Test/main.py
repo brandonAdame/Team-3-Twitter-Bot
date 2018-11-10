@@ -190,7 +190,7 @@ def tweetGreenvilleWeather():
     forecast = getWeather(zipcode)
     print("[" + str(datetime.datetime.now()) +", API Test/NWSPublicAlerts_twitter.py] " + forecast)
     # Tweet the forecast
-    #api.update_status(status=forecast)
+    api.update_status(status=forecast)
 
 #=========================================================================================
 #										main
