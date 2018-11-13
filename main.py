@@ -15,21 +15,21 @@ from bs4 import BeautifulSoup
 #=========================================================================================
 #										 API Keys
 #=========================================================================================
-#OpenWeatherMap Key
+# OpenWeatherMap Key
 apiKey = "07a6ed1ad10a5c97fa9daa3c5babcaab"
 
-#Twitter keys (@CSCIteam3)
+# Twitter keys (@CSCIteam3)
 twitter_consumer_key = "ThbfGVBrpRwMKu9FVgR6HjA1m"
 twitter_consumer_key_secret = "lGyzD69pQGupB4lTG3jWG8rszYmVN4CGjFPYGUBTr1EhKdiBxh"
 twitter_access_key = "1039183691510165505-IkoKTm8MopQ3PzYVmEgU2NdGmognPL"
 twitter_access_key_secret = "jwWe8WqunRcmqKWgvYyDuUjkyotgfUddeLKcTHYz40ktP"
 
-#Tweepy authentication
+# Tweepy authentication
 auth = tweepy.OAuthHandler(twitter_consumer_key, twitter_consumer_key_secret)
 auth.set_access_token(twitter_access_key, twitter_access_key_secret)
 api = tweepy.API(auth)
 
-
+# Daily quote url
 url = "https://www.brainyquote.com/quote_of_the_day"
 
 #=========================================================================================
@@ -37,7 +37,7 @@ url = "https://www.brainyquote.com/quote_of_the_day"
 #=========================================================================================
 # File: brainyquote.py
 # Author: Brandon Adame Gachuz
-# Init date: 9/28/2018
+# Init date: 	9/28/2018
 # Last Updated: 9/29/2018
 #-----------------------------------------------------------------------------------------
 def get_soup(url):
@@ -50,7 +50,7 @@ def get_soup(url):
 #=========================================================================================
 # File: brainyquote.py
 # Author: Brandon Adame Gachuz
-# Init date: 9/28/2018
+# Init date: 	9/28/2018
 # Last Updated: 9/29/2018
 #-----------------------------------------------------------------------------------------
 
@@ -69,7 +69,7 @@ def get_len_quote_containers(url):
 #=========================================================================================
 # File: brainyquote.py
 # Author: Brandon Adame Gachuz
-# Init date: 9/28/2018
+# Init date: 	9/28/2018
 # Last Updated: 9/29/2018
 #-----------------------------------------------------------------------------------------
 def get_daily_quote(url):
@@ -92,68 +92,89 @@ def get_daily_quote(url):
     # print("{}\n\t-{}".format(dq, author))
     return "{}\n\t-{}".format(dq, author)
 
-
 #=========================================================================================
-#                                  getHighLows
+#                                  forecastHelper
 #=========================================================================================
 # Author: Nichoas Ellis
-# Init date:
-# Last Updated:
+# Init date: 	11/13/18
+# Last Updated: 11/13/18
 #-----------------------------------------------------------------------------------------
-def getHighLows(city, state, zipcode):
+def forecastHelper(zipcode, response):
+	# Uses zipcode to get city name and state.
+	zipCodeInfo = zipcodes.matching(zipcode)
+	zipCodeInfo = zipCodeInfo[0]
 
-	# Get the data
-	data = requests.get('https://weather.com/weather/tenday/l/'+city+'+'+state+'+'+zipcode+':4:US')
-	print('https://weather.com/weather/tenday/l/'+city+'+'+state+'+'+zipcode+':4:US')
+	# Store in easy to use variables
+	currentTemp = response["main"]["temp"]
+	city 		= zipCodeInfo["city"].lower().title()
+	state 		= zipCodeInfo["state"]
+	high 		= response["main"]["temp_max"]
+	low 		= response["main"]["temp_min"]
+	winds 		= response["wind"]["speed"]
+	description = response["weather"][0]["description"]
 
-	# Load data into bs4
-	soup = BeautifulSoup(data.text, 'html.parser')
+	# Builds the forecast string
+	forecast = "The weather in " + city + ", " + state + " is " + description + ".\nThe temperature is currently " + str(currentTemp) + " *F with a high of " + str(high) + " *F and a low of " + str(low) + " *F.\nThe wind speed is " + str(winds) + " MPH."
+	# Send back forecast
+	return forecast
 
-	# Get data within a specific element
-	data = []
-	div = soup.find('div', {'class': 'temp'})
-	for tr in soup.find_all('tr'):
-		values = [td.text for td in tr.find_all('td')]
-		data.append(values)
+#=========================================================================================
+#                                  getFiveDay
+#=========================================================================================
+# Author: Nichoas Ellis
+# Init date: 	11/13/18
+# Last Updated: 11/13/18
+#-----------------------------------------------------------------------------------------
+def getFiveDay(zipcode):
+	# Five Day Weather
+	fivURL = "http://api.openweathermap.org/data/2.5/forecast?zip="+ zipcode + "&appid=" + apiKey + "&units=imperial"
 
-	print(data)
+	# Get fivURL web request
+	fivResponse = requests.get(fivURL).json()
 
+	
+
+	# Call getHighLows
+	day2 		= fivResponse["list"][2]
+	forecast2 	= forecastHelper(zipcode, day2)
+	#print(forecast1)
+
+	day3		= fivResponse["list"][3]
+	forecast3 	= forecastHelper(zipcode, day3)
+	#print(forecast2)
+
+	day4		= fivResponse["list"][4]
+	forecast4 	= forecastHelper(zipcode, day4)
+	#print(forecast3)
+
+	day5		= fivResponse["list"][5]
+	forecast5 	= forecastHelper(zipcode, day4)
+	#print(forecast4)
+
+	day6		= fivResponse["list"][6]
+	forecast6	= forecastHelper(zipcode, day6)
+	#print(forecast5)
+
+
+	# Builds the forecast string
+	forecast = "The forecast for the next five days: \n"+ forecast2 + forecast3 + forecast4 + forecast5 + forecast6
+	# Send back forecast
+	return forecast
 
 #=========================================================================================
 #                                   getWeather
 #=========================================================================================
 # Author: Nicholas Ellis
 # Init date: 
-# Last Updated: 
+# Last Updated: 11/13/18
 #-----------------------------------------------------------------------------------------
 def getWeather(zipcode):
-	# Uses zipcode to get city name and state.
-	zipCodeInfo = zipcodes.matching(zipcode)
-	zipCodeInfo = zipCodeInfo[0]
-
 	# OpenWeatherMap API current weather url
 	curURL = "http://api.openweathermap.org/data/2.5/weather?zip=" + zipcode + "&appid=" + apiKey + "&units=imperial"
-
 	# Get curURL web request
 	curResponse = requests.get(curURL).json()
-
-	# Store in easy to use variables
-	currentTemp = curResponse["main"]["temp"]
-	city 		= zipCodeInfo["city"].lower().title()
-	state 		= zipCodeInfo["state"]
-
-	# Call getHighLows
-	#high 		= curResponse["main"]["temp_max"]
-	#low 		= curResponse["main"]["temp_min"]
-
-	winds 		= curResponse["wind"]["speed"]
-	description = curResponse["weather"][0]["description"]
-
-	print(high)
-	print(low)
-
 	# Builds the forecast string
-	forecast = "The weather in " + city + ", " + state + " is " + description + ".\nThe temperature is currently " + str(currentTemp) + " *F with a high of " + str(high) + " *F and a low of " + str(low) + " *F.\nThe wind speed is " + str(winds) + " MPH."
+	forecast	= forecastHelper(zipcode, curResponse)
 	# Send back forecast
 	return forecast
 
@@ -181,7 +202,7 @@ def directMessage():
 def tweetGreenvilleWeather():
 	# Greenville, NC 27858
 	zipcode = "27858"
-	# Gets the forecast
+	# Builds the forecast string
 	forecast = getWeather(zipcode)
 	print(forecast)
 	# Tweet the forecast
@@ -203,9 +224,10 @@ schedule.every().day.at("08:00").do(tweetGreenvilleWeather)
 # Manually print weather
 #print(getWeather("27858"))
 
-print(get_daily_quote(url))
+#getWeather("27858")
+print(getFiveDay("27858"))
 
-#getHighLows("Greenville", "NC", "27858")
+#print(get_daily_quote(url))
 
 while True:
     schedule.run_pending()
