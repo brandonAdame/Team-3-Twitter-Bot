@@ -11,8 +11,6 @@ import datetime
 from requests import get
 from bs4 import BeautifulSoup
 
-
-
 #=========================================================================================
 #										 API Keys
 #=========================================================================================
@@ -133,7 +131,7 @@ def getFiveDay(zipcode):
 	# Get fivURL web request
 	fivResponse = requests.get(fivURL).json()
 
-
+	# use param for fixing day 
 
 	# Call getHighLows
 	day2 		= fivResponse["list"][2]
