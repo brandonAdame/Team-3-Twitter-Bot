@@ -2,14 +2,14 @@
 #										 Imports
 #=========================================================================================
 import requests 	#Python HTTP for Humans.
-import feedparser
-import time
-import tweepy 		#Twitter API
-import zipcodes		#zipcodes database
-import schedule		
-import datetime
-from requests import get
-from bs4 import BeautifulSoup
+import feedparser	#Parse RSS Feeds.
+import time 		#Time and Converting.
+import tweepy 		#Twitter API.
+import zipcodes		#zipcodes database.
+import schedule		#API for Schedulng jobs.
+import datetime		#Manipulating Dates
+from requests import get 	#Send HTTP Requests. 
+from bs4 import BeautifulSoup	#Parsing HTML/XML files.
 
 
 #=========================================================================================
