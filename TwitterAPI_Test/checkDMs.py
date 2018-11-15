@@ -16,10 +16,12 @@ print(r.status_code)
 #print(r.json())
 
 i=0
-for message in r.json()["events"]:
+print(r.json());
+
+'''for message in r.json()["events"]:
   print(i)
   i = i+ 1
   print (message["sender_id"])
   print (message["recipient_id"])
   print (message["message_create"]["message_data"]["text"])
-#[0]["message_create"]
+#[0]["message_create"]'''
