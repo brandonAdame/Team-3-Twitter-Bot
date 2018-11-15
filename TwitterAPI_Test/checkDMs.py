@@ -19,5 +19,7 @@ i=0
 for message in r.json()["events"]:
   print(i)
   i = i+ 1
-  print (message["message_create"]["message_data"])
+  print (message["message_create"]["sender_id"])
+  print (message["message_create"]["recipient_id"])
+  print (message["message_create"]["message_data"]["text"])
 #[0]["message_create"]
