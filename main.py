@@ -113,7 +113,16 @@ def forecastHelper(zipcode, response):
 	description = response["weather"][0]["description"]
 
 	# Builds the forecast string
-	forecast = "The weather in " + city + ", " + state + " is " + description + ".\nThe temperature is currently " + str(currentTemp) + " *F with a high of " + str(high) + " *F and a low of " + str(low) + " *F.\nThe wind speed is " + str(winds) + " MPH."
+	forecast = "The weather in {}, {} is {}.\nThe temperature is currently {} *F \
+		with a high of {} *F and low of {} *F.".format(city, state, description, str(currentTemp), 
+		str(high), str(low))  # This should make your code cleaner: Brandon
+	
+	''' Your original code
+	forecast = "The weather in " + city + ", " + state + " is " + description + \
+		".\nThe temperature is currently " + str(currentTemp) + " *F with a high of " \
+		+ str(high) + " *F and a low of " + str(low) + " *F.\nThe wind speed is " + str(winds) + " MPH."
+	'''
+
 	# Send back forecast
 	return forecast
 
@@ -156,7 +165,10 @@ def getFiveDay(zipcode):
 
 
 	# Builds the forecast string
-	forecast = "The forecast for the next five days: \n"+ forecast2 + forecast3 + forecast4 + forecast5 + forecast6
+	forecast = "The forecast for the next five days: \n{} {} {} {} {}".format(forecast2, forecast3, 
+		forecast4, forecast5, forecast6)
+
+	# forecast = "The forecast for the next five days: \n"+ forecast2 + forecast3 + forecast4 + forecast5 + forecast6
 	# Send back forecast
 	return forecast
 
