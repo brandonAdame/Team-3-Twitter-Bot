@@ -16,4 +16,4 @@ print(r.status_code)
 #print(r.json())
 
 for message in r.json()["events"]:
-  print (message[0]["message_create"])
+  print (message.json()[0]["message_create"])
