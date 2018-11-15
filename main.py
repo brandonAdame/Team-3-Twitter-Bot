@@ -88,7 +88,6 @@ def get_daily_quote(url):
     author_containers = first_quote.find_all('a')
     author = author_containers[1].text
 
-    # print("{}\n\t-{}".format(dq, author))
     return "{}\n\t-{}".format(dq, author)
 
 #=========================================================================================
@@ -117,6 +116,8 @@ def forecastHelper(zipcode, response):
 		with a high of {} *F and low of {} *F.".format(city, state, description, str(currentTemp), 
 		str(high), str(low))  # This should make your code cleaner: Brandon
 	
+	
+
 	''' Your original code
 	forecast = "The weather in " + city + ", " + state + " is " + description + \
 		".\nThe temperature is currently " + str(currentTemp) + " *F with a high of " \
@@ -213,9 +214,11 @@ def directMessage():
 def tweetGreenvilleWeather():
 	# Greenville, NC 27858
 	zipcode = "27858"
+
 	# Builds the forecast string
 	forecast = getWeather(zipcode)
 	print(forecast)
+
 	# Tweet the forecast
 	api.update_status(status=forecast)
 
