@@ -11,7 +11,7 @@ A twitter bot that messages users the weather based on conditions that they spec
 
 2. Install dependencies.
 
-   ```bash
+   ```
    pip install requests
    pip install feedparser
    pip install time
