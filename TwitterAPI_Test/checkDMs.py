@@ -15,6 +15,9 @@ r = api.request('direct_messages/events/list')
 print(r.status_code)
 #print(r.json())
 
+i=0
 for message in r.json()["events"]:
-  print (message[0])
+  print(i)
+  i = i+ 1
+  print (message)
 #[0]["message_create"]
