@@ -9,7 +9,7 @@ A twitter bot that messages users the weather based on conditions that they spec
 
 2. Install dependencies.
 
-   ```
+   ```bash
    pip install requests
    pip install feedparser
    pip install time
@@ -38,8 +38,6 @@ Weeks:
 
 - Build clothing suggestion module
 - Build daily quote module
-- Build word of the day module
-- Build picture module
 - Build top news headline module
 - Build shower thoughts module
 
