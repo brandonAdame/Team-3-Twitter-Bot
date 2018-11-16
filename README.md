@@ -40,6 +40,7 @@ Weeks:
 
 - Build clothing suggestion module
 - Build daily quote module
+- Build word of the day module
 - Build top news headline module
 - Build shower thoughts module
 
