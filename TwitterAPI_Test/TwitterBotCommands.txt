@@ -1,0 +1,38 @@
+****************************************
+********** Team 3 Twitter Bot **********
+**********    DM Commands     **********
+****************************************
+
+-----------------
+--- Add Event ---
+-----------------
+
+!add [eventType] [parameters1] [parameters2] [parameters3]...
+
+     Local Weather
+     Sends the local weather at the time you want (defalt 8AM)
+     !add localWeather [zipCode] [time to send weather, optional]
+     
+     Daily Quote
+     Sends a daily quote every morning at 7AM
+     !add dailyQuote
+     
+     **dailyStocks**
+     Send the value of a stock everyday after the stock market cloeses (5:30PM)
+     !add dailyStocks [stock symbol]
+     
+     Word of the Day
+     Sends a daily word every morning at 9AM
+     !add word
+
+**!unsub [eventID]**
+Unsubscribe from an event
+
+**!unsubAll**
+Unsubscribe from all events.
+
+**!info**
+The twitter bot will reply with a list of all the events you are signed up for.
+
+**!info [eventID]**
+The twitter bot will reply with a more information about the event you are signed up for.
