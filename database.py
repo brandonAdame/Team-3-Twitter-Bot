@@ -41,7 +41,7 @@ def getByUsername(username):
     Parameters
     ----------
     username : str
-        Twitter username of a user to look up.
+        Twitter id of a user to look up.
 
     Returns
     -------
