@@ -1,5 +1,6 @@
 import feedparser
 import time
+import datetime
 import tweepy
 import requests
 ##Get weather alerts from The National Weather Service once a minute.  If they are new, it prints them to the consolse otherwise it skips them.

@@ -26,44 +26,45 @@ tryCounter = 0
 def tick():
     global tryCounter
     tryCounter = tryCounter + 1
-    print("Next event triggers at " + str(getNextTime()))
-    pause.until(getNextTime())
+    print("Next event triggers at " + str(getNextTime(True)))
+    pause.until(getNextTime(True))
     event = database.nextEvent()
-    print(event)
-    try:
-        if (event["eventType"] == "localWeather"):
-            print(event["location"])
-            sendDM(event["twitterAccount"], weather.getWeather(event["location"]))
-            database.updateEventTimeAuto(event["id"])
-            print("Run localWeather event #" + event["id"])
-        elif (event["eventType"] == "dailyStock"):
-            #TODO Call dailyStock function
-            print("Run dailyStock #" + event["id"])
-        elif (event["eventType"] == "dailyQuote"):
-            print(int(event["twitterAccount"]))
-            sendDM(event["twitterAccount"], getDailyQuote.get_daily_quote("https://www.brainyquote.com/quote_of_the_day").encode('ascii', 'ignore').decode('ascii').replace('\n', ""))
-            database.updateEventTimeAuto(event["id"])
-            print("Run daily quote #" + event["id"])
-        elif (event["eventType"] ==  "dailyWord"):
-            sendDM(event["twitterAccount"], word.getWordOfDay())
-            database.updateEventTimeAuto(event["id"])
-            print("Run word event #" + event["id"])
+    if getNextTime(False) < datetime.datetime.now():
+        print(event)
+        try:
+            if (event["eventType"] == "localWeather"):
+                print(event["location"])
+                sendDM(event["twitterAccount"], weather.getWeather(event["location"]))
+                database.updateEventTimeAuto(event["id"])
+                print("Run localWeather event #" + event["id"])
+            elif (event["eventType"] == "dailyStock"):
+                #TODO Call dailyStock function
+                print("Run dailyStock #" + event["id"])
+            elif (event["eventType"] == "dailyQuote"):
+                print(int(event["twitterAccount"]))
+                sendDM(event["twitterAccount"], getDailyQuote.get_daily_quote("https://www.brainyquote.com/quote_of_the_day").encode('ascii', 'ignore').decode('ascii').replace('\n', ""))
+                database.updateEventTimeAuto(event["id"])
+                print("Run daily quote #" + event["id"])
+            elif (event["eventType"] ==  "dailyWord"):
+                sendDM(event["twitterAccount"], word.getWordOfDay())
+                database.updateEventTimeAuto(event["id"])
+                print("Run word event #" + event["id"])
 
-        tryCounter = 0
+            tryCounter = 0
 
-    except Exception:
-        exc_type, exc_value, exc_traceback = sys.exc_info()
-        lines = traceback.format_exception(exc_type, exc_value, exc_traceback)
-        print(lines)
-        if tryCounter <= 3:
-            time.sleep(10)
-        else:
-            database.updateEventTimeAuto(event["id"])
-            print("Event #" + event["id"] + " failed 3 times.  It was skipped.")
+        except Exception:
+            exc_type, exc_value, exc_traceback = sys.exc_info()
+            lines = traceback.format_exception(exc_type, exc_value, exc_traceback)
+            print(lines)
+            if tryCounter <= 3:
+                time.sleep(10)
+            else:
+                database.updateEventTimeAuto(event["id"])
+                print("Event #" + event["id"] + " failed 3 times.  It was skipped.")
 
 
 #TODO Don't let program sleep for 6+ hours because any new things scheduled during that time will not run until the next day
-def getNextTime():
+def getNextTime(limit):
     n = database.nextEvent()["nextRunTime"]
     nextEventDate = n.split(" ")[0];
     nextEventTime = n.split(" ")[1];
@@ -78,8 +79,9 @@ def getNextTime():
 
     nextDate = datetime.datetime(n_year, n_mon, n_day, n_hour, n_min, n_sec)
 
-    if ((nextDate > datetime.datetime.now()+datetime.timedelta(minutes=MAX_SLEEP_TIME_BETWEEN_EVENTS))):
-        nextDate = datetime.datetime.now() + datetime.timedelta(minutes = MAX_SLEEP_TIME_BETWEEN_EVENTS)
+    if (limit):
+        if ((nextDate > datetime.datetime.now()+datetime.timedelta(minutes=MAX_SLEEP_TIME_BETWEEN_EVENTS))):
+            nextDate = datetime.datetime.now() + datetime.timedelta(minutes = MAX_SLEEP_TIME_BETWEEN_EVENTS)
 
     return nextDate
 

@@ -42,7 +42,7 @@ def checkDM():
                             print("This is a command ("+command+")")
                             if (command == "help"):
                                 event = dmMessage.split(" ")
-                                if (len((e)<1)):
+                                if (int(len((event))<1)):
                                     if event[1] == "eventTypes":
                                         sendEventHelp(dmFrom)
                                     else:
