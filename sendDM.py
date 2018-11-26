@@ -94,7 +94,7 @@ def twitterStringCleaner(input):
     output = input.replace('\r', ' ').replace('\n', ' ').replace('"', '\'').replace('\\', ' ').replace('-', ' ').replace('\t', ' ')
     return output
 
-sendDM("1039183691510165505", twitterStringCleaner(getDailyQuote.get_daily_quote("https://www.brainyquote.com/quote_of_the_day")))
+# sendDM("1039183691510165505", twitterStringCleaner(getDailyQuote.get_daily_quote("https://www.brainyquote.com/quote_of_the_day")))
 
 #print ()
 #getNextTime()
