@@ -1,5 +1,5 @@
 #=========================================================================================
-#										 Imports
+#                                    Imports
 #=========================================================================================
 import requests 	#Python HTTP for Humans.
 import zipcodes		#zipcodes database.
@@ -7,7 +7,7 @@ import datetime		#Manipulating Dates
 from bs4 import BeautifulSoup	#Parsing HTML/XML files.
 
 #=========================================================================================
-#										 API Keys
+#                                    API Keys
 #=========================================================================================
 #OpenWeatherMap Key
 apiKey = "07a6ed1ad10a5c97fa9daa3c5babcaab"
