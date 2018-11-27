@@ -8,6 +8,9 @@ from bs4 import BeautifulSoup
 class TestBrainyquote(unittest.TestCase):
     def testGetDailyQuote(self):
         s = get_daily_quote
-        self.assertEqual(s, s)
-        
+        curr_quote = "Who covets more is evermore a slave.\n-Robert Herrick"
+        self.assertEqual(curr_quote, s)
+
+if __name__ == '__main__':
+    unittest.main
         

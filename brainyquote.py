@@ -48,7 +48,8 @@ def get_daily_quote(url):
     author_containers = first_quote.find_all('a')
     author = author_containers[1].text
 
-    print("{}\n\t-{}".format(dq, author))
+    # print("{}\n-{}".format(dq, author))
+    return "{}\n-{}".format(dq, author)
 
 
     
