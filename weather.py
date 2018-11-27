@@ -63,7 +63,6 @@ def getHighLows(zipcode, dayNum):
         highLow[0] = highLow[0][:2]
         highLow[1] = '[N/A]' 
    
-    #return (data)
     return highLow
 
 #=========================================================================================
@@ -86,6 +85,7 @@ def forecastStringBuilder(forecast, id):
         forecastString = "The weather today is {} with a high of {} *F and a low of {}  *F.\n".format(forecast[3], str(forecast[5]), str(forecast[6]))
     if id == 2:
         forecastString = "The weather on {} will be {} with a high of {} *F and a low of {} *F.\n".format(forecast[7], forecast[3], str(forecast[5]), str(forecast[6]))
+    
     return forecastString
 
 
@@ -164,7 +164,6 @@ def getFiveDay(zipcode):
     forecast += forecastStringBuilder(forecast2, 2) + forecastStringBuilder(forecast3, 2) 
     forecast += forecastStringBuilder(forecast4, 2) + forecastStringBuilder(forecast5, 2)
     
-    # Send back forecast
     return forecast
 
 
@@ -186,7 +185,6 @@ def getWeather(zipcode):
     # Builds the forecast string
     forecast = getForecastData(zipcode, curResponse, 1, "null")
 
-    # Send back forecast
     return forecastStringBuilder(forecast, 0)
 
 
@@ -197,5 +195,4 @@ if __name__ == '__main__':
     zipcode = '27858'
     # Debug
     #print(getHighLows(zipcode, 1))
-    print(getWeather(zipcode))
-    #print(getFiveDay(zipcode))
+    #print(getWeather(zipcode))
