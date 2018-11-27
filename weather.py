@@ -53,7 +53,7 @@ def getHighLows(zipcode, dayNum):
 #=========================================================================================
 # Author: Nichoas Ellis
 # Init date:    11/15/18
-# Last Updated: 11/15/18
+# Last Updated: 11/27/18
 #-----------------------------------------------------------------------------------------
 def forecastStringBuilder(forecast, id):
     """
@@ -63,7 +63,7 @@ def forecastStringBuilder(forecast, id):
     """
 
     if id == 0:
-        forecastString = "The weather in {}, {} is {}.\nThe temperature is currently {} *F with a high of {} *F and a low of {}  *F.\nThe wind speed is {}  MPH.\n".format(forecast[0], forecast[1], forecast[3], str(forecast[2]), str(forecast[5]), str(forecast[6]), str(forecast[4])) 
+        forecastString = "The weather in {}, {} is {}.\nThe temperature is currently {} *F with a high of {} *F and a low of {} *F.\nThe wind speed is {} MPH.\n".format(forecast[0], forecast[1], forecast[3], str(forecast[2]), str(forecast[5]), str(forecast[6]), str(forecast[4])) 
     if id == 1:
         forecastString = "The weather today is {} with a high of {} *F and a low of {}  *F.\n".format(forecast[3], str(forecast[5]), str(forecast[6]))
     if id == 2:
@@ -76,7 +76,7 @@ def forecastStringBuilder(forecast, id):
 #=========================================================================================
 # Author: Nichoas Ellis
 # Init date:    11/13/18
-# Last Updated: 11/15/18
+# Last Updated: 11/27/18
 #-----------------------------------------------------------------------------------------
 def getForecastData(zipcode, response, dayNum, dayOfWeek):
     """
@@ -91,8 +91,10 @@ def getForecastData(zipcode, response, dayNum, dayOfWeek):
     city        = zipCodeInfo["city"].lower().title()
     state       = zipCodeInfo["state"]
     currentTemp = response["main"]["temp"]
+    currentTemp = int(currentTemp)
     description = response["weather"][0]["description"]
     winds       = response["wind"]["speed"]
+    winds       = int(winds)
 
     # Take current date's high's and lows
     highLow     = getHighLows(zipcode, dayNum)
@@ -175,3 +177,6 @@ def getWeather(zipcode):
 #=========================================================================================
 if __name__ == '__main__':
     getWeather('27889')
+    # Debug
+    print(getHighLows('27858', 1))
+    print(getWeather('27858'))
