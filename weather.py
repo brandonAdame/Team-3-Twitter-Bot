@@ -1,10 +1,10 @@
 #=========================================================================================
 #                                    Imports
 #=========================================================================================
-import requests 	            # Python HTTP for Humans.
-import zipcodes		            # zipcodes database.
-import datetime		            # Manipulating Dates
-from bs4 import BeautifulSoup	# Parsing HTML/XML files.
+import requests                 # Python HTTP for Humans.
+import zipcodes                 # zipcodes database.
+import datetime                 # Manipulating Dates
+from bs4 import BeautifulSoup   # Parsing HTML/XML files.
 
 #=========================================================================================
 #                                    API Keys
