@@ -1,7 +1,7 @@
 # Team 3 Twitter Bot
-A twitter bot that messages users the weather based on conditions that they specifies. 
+A twitter bot that messages users the weather based on conditions that they specifies. The bot will also tweet daily at 8 a.m. the weather forecast for Greenville, N.C.
 
-![image](https://img.shields.io/badge/completion-85%25-blue.svg)
+![image](https://img.shields.io/badge/completion-90%25-blue.svg)
 
 ![image](http://www.smallplanet.com/soapbox/wp-content/uploads/2018/06/22adb21cd5efbf3d4dde9a8ce8c188c3.jpg)
 
@@ -26,16 +26,20 @@ A twitter bot that messages users the weather based on conditions that they spec
 
 5. To deactivate virtualenv, type this in your terminal `deactivate`
 
+
+
 ## Running Unit Tests
 
 To run unit tests for do: `python -m unittest`
 The following also works: `python -m unittest <module name>`
 
+
+
 ## Project Timeline
 
-The project will be based on a weekly sprints. The project will be due on the last day of class, December 3. The final project presentations will be held on November 20 and 27.
+The project will be based on a weekly sprints. The project will be presented on December 5^th^ at 8-10:30am.
 
-Weeks:
+**Weeks:**
 
 1. Build weather module
 2. Build database
@@ -53,13 +57,21 @@ Weeks:
 ## Built With
 
 - [Tweepy](http://docs.tweepy.org/en/v3.5.0/getting_started.html) - Accessing the Twitter API.
+
 - [OpenWeatherMap](https://openweathermap.org/api) - Pulls current weather data.
+
 - [Request](https://developer.mozilla.org/en-US/docs/Web/API/Request) - The request interface of the Fetch API represents a resource request.
+
 - [Beautiful Soup Documentation](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) - Used for pulling data out of HTML and XML files.
+
 - [virtulaenv](https://virtualenv.pypa.io/en/stable/) - Is a tool to create isolated Python environments.
+
 - [zipcodes](https://pypi.org/project/zipcodes/) - A lightweight U.S. zip-code validation package for Python (2 and 3).
+
 - [schedule](https://pypi.org/project/schedule/) - Python job scheduling for humans. 
+
 - [time](https://docs.python.org/2/library/time.html) - This module provides various time-related functions.
+
 
 
 ## Project Contributers

@@ -6,13 +6,16 @@ from bs4 import BeautifulSoup
 # How to run tests: python -m unittest test_getDailyQuote.py
 
 class TestgetDailyQuote(unittest.TestCase):
-
-	def test_get_daily_quote(self):
-		curr_quote = "Who covets more is evermore a slave.\n-Robert Herrick"
-		s = get_daily_quote()
-		self.assertEqual(s, curr_quote)
-		self.assertNotEqual(s, "lkjlk")
-    
-
+    # Test 1 (s = manual typed daily quote)
+    def test_get_daily_quote(self):
+        s = get_daily_quote()
+        self.assertEqual(s, "Who covets more is evermore a slave.\n-Robert Herrick")
+    #Test 1: passed
+        
+    # Test 2 (t != manual typed daily quote)
+    def test_get_daily_quote_fail(self):
+    	t = get_daily_quote()
+    	self.assertNotEqual(t, "ho covets more is evermore a slave.\n-Robert Herrick")    
+    # Test 2: passed	
 if __name__ == '__main__':
     unittest.main
