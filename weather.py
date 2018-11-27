@@ -35,7 +35,7 @@ def getHighLows(city, state, zipcode):
         values = [td.text for td in tr.find_all('td')]
         data.append(values)
 
-    # print(data)
+    print(data)
     return (data)
 
 
