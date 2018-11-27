@@ -62,5 +62,8 @@ def get_daily_quote():
     author_containers = first_quote.find_all('a')
     author = author_containers[1].text
 
-    # print("{}\n\t-{}".format(dq, author))
+    # print(type("{}\n-{}".format(dq, author)))
     return "{}\n-{}".format(dq, author)
+
+if __name__ == '__main__':
+    get_daily_quote()

@@ -3,7 +3,7 @@ from getDailyQuote import get_daily_quote
 from requests import get
 from bs4 import BeautifulSoup
 
-# How to run tests: python -m unittest test_brainyquote.py
+# How to run tests: python -m unittest test_getDailyQuote.py
 
 class TestgetDailyQuote(unittest.TestCase):
     # Test 1 (s = manual typed daily quote)
