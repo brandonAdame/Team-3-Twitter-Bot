@@ -19,12 +19,12 @@ $result = mysqli_query($myConnection, $sql) or die(mysqli_error($myConnection));
 	++$count;
 		$id = $row['idNumber'];
 		$eventType = $row['eventType'];
-		$result = mysqli_query($myConnection, "DELETE FROM `events` WHERE `idNumber` = $id;") or die(mysqli_error($myConnection));
+		$result2 = mysqli_query($myConnection, "DELETE FROM `events` WHERE `idNumber` = $id;") or die(mysqli_error($myConnection));
 
 		if ($eventType == "localWeather"){
-			$result = mysqli_query($myConnection, "DELETE FROM `localWeather` WHERE `idNumber` = $id;") or die(mysqli_error($myConnection));
+			$result2 = mysqli_query($myConnection, "DELETE FROM `localWeather` WHERE `idNumber` = $id;") or die(mysqli_error($myConnection));
 		}else if ($eventType == "dailyStocks"){
-			$result = mysqli_query($myConnection, "DELETE FROM `dailyStocks` WHERE `idNumber` = $id;") or die(mysqli_error($myConnection));
+			$result2 = mysqli_query($myConnection, "DELETE FROM `dailyStocks` WHERE `idNumber` = $id;") or die(mysqli_error($myConnection));
 		}
 
 	echo "Deleted event #$id ($eventType)\n";

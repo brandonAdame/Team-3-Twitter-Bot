@@ -21,6 +21,9 @@ if($eventType == "dailyStocks") {
 }else if ($eventType == "dailyQuote"){
 	$nextRunTime->setTime(8, 0, 0);
 	$goodEventType = true;
+}else if ($eventType == "dailyWord"){
+	$nextRunTime->setTime(9, 0, 0);
+	$goodEventType = true;
 }else{
 	echo "Unknown event type.  Did not add to database.";
 }

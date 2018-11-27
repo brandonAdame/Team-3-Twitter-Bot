@@ -64,15 +64,15 @@ $sql = "SELECT * FROM events WHERE idNumber=$id LIMIT 1";
 
 								//Get special info
 										if ($eventType == "localWeather"){
-											$result = mysqli_query($myConnection, "SELECT * FROM localWeather WHERE idNumber=$id") or die(mysqli_error($myConnection));
-												while($row = mysqli_fetch_array($result)) {
+											$result2 = mysqli_query($myConnection, "SELECT * FROM localWeather WHERE idNumber=$id") or die(mysqli_error($myConnection));
+												while($row = mysqli_fetch_array($result2)) {
 													$location = $row['location'];
 													$sendTime = $row['sendTime'];
 												}
 												echo", \"location\": \"$location\", \"sendTime\": \"$sendTime\"";
 										}else if ($eventType == "dailyStocks"){
-											$result = mysqli_query($myConnection, "SELECT * FROM dailyStocks WHERE idNumber=$id") or die(mysqli_error($myConnection));
-												while($row = mysqli_fetch_array($result)) {
+											$result2 = mysqli_query($myConnection, "SELECT * FROM dailyStocks WHERE idNumber=$id") or die(mysqli_error($myConnection));
+												while($row = mysqli_fetch_array($result2)) {
 													$symbol = $row['symbol'];
 												}
 												echo ", \"symbol\": \"$symbol\"";
