@@ -26,6 +26,9 @@ A twitter bot that messages users the weather based on conditions that they spec
 
 5. To deactivate virtualenv, type this in your terminal `deactivate`
 
+## Running Unit Tests
+
+To run unit tests for do: `python -m unittest`
 
 ## Project Timeline
 
