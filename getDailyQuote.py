@@ -63,4 +63,4 @@ def get_daily_quote(url):
     author = author_containers[1].text
 
     # print("{}\n\t-{}".format(dq, author))
-    return "{}\n\t-{}".format(dq, author)
+    return "{}\n-{}".format(dq, author)
