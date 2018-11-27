@@ -45,7 +45,7 @@ def get_len_quote_containers(url):
 # Init date: 9/28/2018
 # Last Updated: 9/29/2018
 #-----------------------------------------------------------------------------------------
-def get_daily_quote(url):
+def get_daily_quote():
     """
     This method gets the daily quote and author
     from brainyquote.com
