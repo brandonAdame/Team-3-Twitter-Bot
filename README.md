@@ -29,6 +29,7 @@ A twitter bot that messages users the weather based on conditions that they spec
 ## Running Unit Tests
 
 To run unit tests for do: `python -m unittest`
+The following also works: `python -m unittest <module name>`
 
 ## Project Timeline
 
