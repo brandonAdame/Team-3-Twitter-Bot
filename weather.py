@@ -23,7 +23,7 @@ def getHighLows(city, state, zipcode):
 
     # Get the data
     data = requests.get('https://weather.com/weather/tenday/l/'+city+'+'+state+'+'+zipcode+':4:US')
-    print("[" + str(datetime.datetime.now()) +", API Test/NWSPublicAlerts_twitter.py] https://weather.com/weather/tenday/l/'+city+'+'+state+'+'+zipcode+':4:US")
+    # print("[" + str(datetime.datetime.now()) +", API Test/NWSPublicAlerts_twitter.py] https://weather.com/weather/tenday/l/'+city+'+'+state+'+'+zipcode+':4:US")
 
     # Load data into bs4
     soup = BeautifulSoup(data.text, 'html.parser')
@@ -35,6 +35,7 @@ def getHighLows(city, state, zipcode):
         values = [td.text for td in tr.find_all('td')]
         data.append(values)
 
+    # print(data)
     return (data)
 
 
@@ -77,6 +78,12 @@ def getWeather(zipcode):
     #print(low)
 
     # Builds the forecast string
-    forecast = "The weather in " + city + ", " + state + " is " + description + ".  The temperature is currently " + str(currentTemp) + " *F with a high of " + str(high) + " *F and a low of " + str(low) + " *F.  The wind speed is " + str(winds) + " MPH."
+    forecast = "The weather in {}, {} is {}. The temperature is currently {} *F. Max: {} / Min: {}".format(city, 
+    state, description, str(currentTemp), str(high), str(low))
+    # forecast = "The weather in " + city + ", " + state + " is " + description + ".  The temperature is currently " + str(currentTemp) + " *F with a high of " + str(high) + " *F and a low of " + str(low) + " *F.  The wind speed is " + str(winds) + " MPH."
     # Send back forecast
+    # print(forecast)
     return forecast
+
+if __name__ == '__main__':
+    getWeather('27889')
