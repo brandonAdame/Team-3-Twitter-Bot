@@ -95,20 +95,6 @@ def get_daily_quote(url):
 
 
 #=========================================================================================
-#                                clothingSuggestions
-#=========================================================================================
-# Author: Trevor Downey
-# Init date:    11/15/2018
-# Last Updated: 11/15/2018
-#-----------------------------------------------------------------------------------------
-def clothingSuggestions(zipcode, dayNum):
-    """
-    When calling only use dayNum = 1
-    """
-    suggestion = ""
-    return suggestion
-
-#=========================================================================================
 #                                  getHighLows
 #=========================================================================================
 # Author: Nichoas Ellis
@@ -324,8 +310,6 @@ print(getFiveDay("27858"))
 # Manually print daily quote
 #print(get_daily_quote(url))
 
-# Manually print clothing suggestion
-print(clothingSuggestions("27858", 1))
 
 while True:
     schedule.run_pending()

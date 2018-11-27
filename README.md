@@ -1,7 +1,7 @@
 # Team 3 Twitter Bot
 A twitter bot that messages users the weather based on conditions that they specifies. The bot will also tweet daily at 8 a.m. the weather forecast for Greenville, N.C.
 
-![image](https://img.shields.io/badge/completion-90%25-blue.svg)
+![image](https://img.shields.io/badge/completion-95%25-blue.svg)
 
 ![image](http://www.smallplanet.com/soapbox/wp-content/uploads/2018/06/22adb21cd5efbf3d4dde9a8ce8c188c3.jpg)
 
