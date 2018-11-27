@@ -1,10 +1,17 @@
 #=========================================================================================
 #                                    Imports
 #=========================================================================================
-import requests                 # Python HTTP for Humans.
-import zipcodes                 # zipcodes database.
-import datetime                 # Manipulating Dates
-from bs4 import BeautifulSoup   # Parsing HTML/XML files.
+import requests     #Python HTTP for Humans.
+import feedparser   #Parse RSS Feeds
+import time         #Time and Converting.
+import tweepy       #Twitter API
+import zipcodes     #zipcodes database
+import schedule     #API for Schedulng jobs.
+import datetime     #Manipulating Dates
+from datetime import date
+import calendar
+from requests import get #Send HTTP Requests. 
+from bs4 import BeautifulSoup
 
 #=========================================================================================
 #                                    API Keys
@@ -17,13 +24,13 @@ apiKey = "07a6ed1ad10a5c97fa9daa3c5babcaab"
 #=========================================================================================
 # Author: Nichoas Ellis
 # Init date:    11/07/18
-# Last Updated: 11/15/18
+# Last Updated: 11/27/18
 #-----------------------------------------------------------------------------------------
 def getHighLows(zipcode, dayNum):
     """
     returns array 
-    array[0] = high temperature
-    array[1] = low  temperature
+    highLow[0] = high temperature
+    highLow[1] = low  temperature
     """
     # Uses zipcode to get city name and state.
     zipCodeInfo = zipcodes.matching(zipcode)
@@ -33,8 +40,6 @@ def getHighLows(zipcode, dayNum):
 
     # Get the data
     data = requests.get('https://weather.com/weather/tenday/l/'+city+'+'+state+'+'+zipcode+':4:US')
-    #print("[" + str(datetime.datetime.now()) +", API Test/NWSPublicAlerts_twitter.py] https://weather.com/weather/tenday/l/'+city+'+'+state+'+'+zipcode+':4:US")
-
     # Load data into bs4
     soup = BeautifulSoup(data.text, 'html.parser')
 
@@ -44,9 +49,22 @@ def getHighLows(zipcode, dayNum):
     for tr in soup.find_all('tr'):
         values = [td.text for td in tr.find_all('td')]
         data.append(values)
-
+    highLow = data[dayNum][3].split("°")
+    
+    # If the high value is null '--' swap with N/A and reformat output
+    if(highLow[0][:2] == '--'):
+        highLow[1] = highLow[0][2:]
+        highLow[0] = '[N/A]'
+        # If both are null
+        if(highLow[1] == '--'):
+            highLow[1] = '[N/A)]'
+    # If the low value is null '--' swap with N/A and reformat output
+    if(highLow[0][2:] == '--'):
+        highLow[0] = highLow[0][:2]
+        highLow[1] = '[N/A]' 
+   
     #return (data)
-    return data[dayNum][3].split("°")
+    return highLow
 
 #=========================================================================================
 #                                  forecastStringBuilder
@@ -176,7 +194,8 @@ def getWeather(zipcode):
 #                                    main
 #=========================================================================================
 if __name__ == '__main__':
-    getWeather('27889')
+    zipcode = '27858'
     # Debug
-    print(getHighLows('27858', 1))
-    print(getWeather('27858'))
+    #print(getHighLows(zipcode, 1))
+    print(getWeather(zipcode))
+    #print(getFiveDay(zipcode))
