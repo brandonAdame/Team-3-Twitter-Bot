@@ -12,6 +12,7 @@ from datetime import date
 import calendar
 from requests import get #Send HTTP Requests. 
 from bs4 import BeautifulSoup
+import database as database
 
 
 #=========================================================================================
@@ -269,6 +270,8 @@ def tweetGreenvilleWeather():
     
     # Tweet the forecast
     api.update_status(status=forecast)
+    database.addMessage("main.py", "tweets", "The weather was tweeted.  " + forecast)
+    database.addMessage("main.py", "online", "Script main.py is still working.")
 
 
 #=========================================================================================

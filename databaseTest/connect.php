@@ -1,10 +1,10 @@
 <?php
-/*$db_host = "35.196.238.195"; //Host Address localhost
+$db_host = "35.196.238.195"; //Host Address localhost
 $db_username = "root"; //MySQL username
 $db_pass = "85v6EGGnz8FOmcgD"; //MySQL password
 $db_name = "TwitterBot"; //MySQL database*/
 
-$db_host = "localhost"; //Host Address localhost
+/*$db_host = "localhost"; //Host Address localhost
 $db_username = "davidmee_Bot"; //MySQL username
 $db_pass = "uKzb{{SKJomb"; //MySQL password
 $db_name = "davidmee_csci3030"; //MySQL database*/

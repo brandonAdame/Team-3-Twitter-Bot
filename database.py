@@ -72,8 +72,11 @@ def addLocalWeatherEvent(twitterAccount, location, sendTime):
     """
     apiURL = baseURL + "add.php?twitterAccount="+twitterAccount+"&eventType=localWeather&location="+location+"&sendTime="+sendTime
     r = requests.get(apiURL)
+    print(addMessage("database.py", "received", "Added weather event to database for " + twitterAccount + " at " + location + "."))
     if (r.text != "Unknown event type.  Did not add to database."):
+        print(r.text)
         return r.json()["events"][0]
+
     else:
         return  r.text
 
@@ -95,6 +98,7 @@ def addDailyStocks(twitterAccount, symbol):
     """
     apiURL = baseURL + "add.php?twitterAccount="+twitterAccount+"&eventType=dailyStocks&symbol="+symbol
     r = requests.get(apiURL)
+    print(addMessage("database.py", "received", "Added stock event to database for " + twitterAccount + " for " + symbol + "."))
     if (r.text != "Unknown event type.  Did not add to database."):
         return r.json()["events"][0]
     else:
@@ -103,6 +107,7 @@ def addDailyStocks(twitterAccount, symbol):
 def addDailyWord(twitterAccount):
     apiURL = baseURL + "add.php?twitterAccount=" + twitterAccount + "&eventType=dailyWord"
     r = requests.get(apiURL)
+    print(addMessage("database.py", "received", "Added daily word event to database for " + twitterAccount + "."))
     if (r.text != "Unknown event type.  Did not add to database."):
         return r.json()["events"][0]
     else:
@@ -124,6 +129,7 @@ def addDailyQuote(twitterAccount):
     """
     apiURL = baseURL + "add.php?twitterAccount="+twitterAccount+"&eventType=dailyQuote"
     r = requests.get(apiURL)
+    print(addMessage("database.py", "received", "Added daily quote event to database for " + twitterAccount + "."))
     if (r.text != "Unknown event type.  Did not add to database."):
         return r.json()["events"][0]
     else:
@@ -145,6 +151,7 @@ def unsub(id):
 
     """
     apiURL = baseURL + "unsub.php?id="+str(id)
+    print(addMessage("database.py", "received", "Deleted event " + id + "."))
     return requests.get(apiURL).text
 
 def unsubAll(username):
@@ -163,6 +170,7 @@ def unsubAll(username):
 
     """
     apiURL = baseURL + "unsub.php?twitterAccount="+username
+    print(addMessage("database.py", "received", "Deleted all events for users " + username + "."))
     return requests.get(apiURL).text
 
 def updateEventTimeAuto(id):
@@ -203,6 +211,11 @@ def updateEventTime(id, nextSendTime):
     r = requests.get(apiURL)
     return r.json()["events"][0]
 
+def addMessage(script, type, message):
+    apiURL = baseURL + "log.php?script=" + script + "&type=" + type + "&message=" + message
+    r = requests.get(apiURL)
+    return r.text;
+
 """
 ##DEMOS
 print("\nDemos\n")
@@ -229,3 +242,4 @@ print("")
 #print("Remove an event by ID, unsub(24): " + str(unsub(24)))
 #print("Remove all events a user is signed up for, unsubAll(\"DanielLeeMeeks2\"): " + str(unsubAll("DanielLeeMeeks2")))
 """
+#print (addMessage("test.py", "test", "This python."))

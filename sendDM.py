@@ -24,6 +24,7 @@ api = TwitterAPI(consumer_key, consumer_secret, access_key, access_secret)
 tryCounter = 0
 
 def tick():
+    print(database.addMessage("sendDM.py", "online", "Script sendDM.py is still working."))
     global tryCounter
     tryCounter = tryCounter + 1
     print("Next event triggers at " + str(getNextTime(True)))

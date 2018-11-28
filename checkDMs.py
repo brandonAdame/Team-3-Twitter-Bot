@@ -85,6 +85,7 @@ def checkDM():
                                         sendDM(dmFrom, eventToString(e))
                             else:
                                 sendDM(dmFrom, "Sorry, we do not understand the command " + command + ".  Use !help for a list of commands.")
+                                database.addMessage("checkDM.py", "error", "Unknown command: " + command)
                     except Exception:
                         exc_type, exc_value, exc_traceback = sys.exc_info()
                         lines = traceback.format_exception(exc_type, exc_value, exc_traceback)
@@ -92,10 +93,14 @@ def checkDM():
                         for l in lines:
                             e = e + ".  " + l
                         sendDM(dmFrom, "There was an error processing your DM. ("+twitterStringCleaner(e)+")")
+                        database.addMessage("checkDM.py", "error", "There was a problem processing a DMs. (" + str(r.status_code) + ")")
                 markDMasRead(t["id"])
 
     else:
         print("There was a problem getting Twitter DMs. (" + str(r.status_code) + ")")
+        database.addMessage("checkDM.py", "error", "There was a problem getting Twitter DMs. (" + str(r.status_code) + ")")
+
+    database.addMessage("checkDM.py", "online", "Script checkDM.py is still working.")
 
 def eventToString(event):
     ret = "Event #" + event["id"] + " is an " + event["eventType"] + " event."
@@ -114,6 +119,7 @@ def sendDM(twitterID, message):
     event = '{"event":{"type":"message_create","message_create":{"target":{"recipient_id":"%s"},"message_data":{"text":"%s"}}}}' % (twitterID, message)
     r = api.request('direct_messages/events/new', event)
     print(str(r.status_code) + ": " + message)
+    print(database.addMessage("checkDMs.py", "sent", "User " + twitterID + " was sent: " + message))
 
 def markDMasRead(messageID):
     text_file = open("messagesSent.txt", "a")
@@ -126,6 +132,8 @@ def sendHelp(twitterID):
     sendDM(twitterID, "Add a new event by sending '!add [eventType] [parameters1] [parameters2]...'  Type !help eventTypes for a list of events.")
     sendDM(twitterID, "See a list of the events you are signed up for by sending '!info'")
     sendDM(twitterID, "Unsubscribe from an event by sending '!unsub [eventID]' or unsubscribe from all events by sending '!unsubAll'")
+    print(database.addMessage("checkDMs.py", "received", "User " + twitterID + " asked for help."))
+    ##print(database.addMessage("checkDMs.py", "sent", "User " + twitterID + " was sent help."))
 
 def sendEventHelp(twitterID):
     sendDM(twitterID, "Types of events:")
@@ -133,6 +141,8 @@ def sendEventHelp(twitterID):
     sendDM(twitterID, "DAILY QUOTE*: Sends a daily quote every morning at 7AM.  '!add dailyQuote'")
     sendDM(twitterID, "DAILY STOCK: Send the value of a stock everyday after the stock market cloeses (5:30PM).  '!add dailyStocks [stock symbol]'")
     sendDM(twitterID, "WORD OF THE DAY: Sends a daily word every morning at 9AM.  '!add word'")
+    print(database.addMessage("checkDMs.py", "received", "User "+twitterID+" asked for event help."))
+    ##print(database.addMessage("checkDMs.py", "sent", "User " + twitterID + " was sent event help."))
 
 def checkTimeFormat(input):
 
@@ -166,6 +176,7 @@ def decodeLocalWeather(input, twitterID):
         return "Unproperly formatted command: Use !add localWeather [zipCode] [time to send weather, optional]"
     r = database.addLocalWeatherEvent(twitterID, input[2], sendTime).JSON()
     print(input[2])
+    ##print(database.addMessage("database.py", "received", "Added weather event to database: " + r["events"][0]["id"]))
     return "localWeather Event ("+r["id"]+") added to database. "
 
 def twitterStringCleaner(input):
