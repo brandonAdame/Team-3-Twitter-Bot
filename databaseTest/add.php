@@ -7,7 +7,7 @@ $twitterAccount = mysqli_real_escape_string($myConnection, $_GET['twitterAccount
 $eventType = mysqli_real_escape_string($myConnection, $_GET['eventType']);
 $lastRunTime = "2000-01-01 00:00:00";
 //$nextRunTime = new DateTime('tomorrow');
-$nextRunTime = "0000-00-00 00:00:00";
+$nextRunTime = "2000-01-01 00:00:00";
 
 if($eventType == "dailyStocks") {
 	$nextRunTime->setTime(5,30,0);
@@ -18,7 +18,7 @@ if($eventType == "dailyStocks") {
 	$sendTime = mysqli_real_escape_string($myConnection, $_GET['sendTime']);
 	$sendTimeExplode = explode(":",$sendTime);
 	//$nextRunTime->setTime((int)$sendTimeExplode[0], (int)$sendTimeExplode[1], (int)$sendTimeExplode[2]);
-	$nextRunTime = "0000-00-00 00:00:00";
+	$nextRunTime = "2000-01-01 00:00:00";
 	$goodEventType = true;
 }else if ($eventType == "dailyQuote"){
 	#$nextRunTime->setTime(8, 0, 0);
@@ -29,11 +29,11 @@ if($eventType == "dailyStocks") {
 }else{
 	echo "Unknown event type.  Did not add to database.";
 }
-$nextRunTime = "0000-00-00 00:00:00";
+$nextRunTime = "2000-01-01 00:00:00";
 
 if ($goodEventType){
 	//$nextRunTime_formatted = date_format($nextRunTime, 'Y-m-d H:i:s');
-	$nextRunTime_formatted = "0000-00-00 00:00:00";
+	$nextRunTime_formatted = "2000-01-01 00:00:00";
 	//echo "INSERT INTO `events` (`idNumber`, `twitterAccount`, `eventType`, `nextRunTime`, `lastRunTime`) VALUES (NULL, '$twitterAccount', '$eventType', '$lastRunTime', '$nextRunTime_formatted');";
 		$result = mysqli_query($myConnection, "INSERT INTO `events` (`idNumber`, `twitterAccount`, `eventType`, `nextRunTime`, `lastRunTime`) VALUES (NULL, '$twitterAccount', '$eventType', '$nextRunTime_formatted', '$lastRunTime');") or die(mysqli_error($myConnection));
 		$id = mysqli_insert_id($myConnection);
