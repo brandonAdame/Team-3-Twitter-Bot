@@ -98,14 +98,14 @@ def get_daily_quote(url):
 #                                  getHighLows
 #=========================================================================================
 # Author: Nichoas Ellis
-# Init date: 	11/07/18
-# Last Updated: 11/15/18
+# Init date:    11/07/18
+# Last Updated: 11/27/18
 #-----------------------------------------------------------------------------------------
 def getHighLows(zipcode, dayNum):
     """
     returns array 
-    array[0] = high temperature
-    array[1] = low  temperature
+    highLow[0] = high temperature
+    highLow[1] = low  temperature
     """
     # Uses zipcode to get city name and state.
     zipCodeInfo = zipcodes.matching(zipcode)
@@ -115,8 +115,6 @@ def getHighLows(zipcode, dayNum):
 
     # Get the data
     data = requests.get('https://weather.com/weather/tenday/l/'+city+'+'+state+'+'+zipcode+':4:US')
-    #print("[" + str(datetime.datetime.now()) +", API Test/NWSPublicAlerts_twitter.py] https://weather.com/weather/tenday/l/'+city+'+'+state+'+'+zipcode+':4:US")
-
     # Load data into bs4
     soup = BeautifulSoup(data.text, 'html.parser')
 
@@ -126,16 +124,30 @@ def getHighLows(zipcode, dayNum):
     for tr in soup.find_all('tr'):
         values = [td.text for td in tr.find_all('td')]
         data.append(values)
+    
+    highLow = data[dayNum][3].split("°")
+    
+    # If the high value is null '--' swap with N/A and reformat output
+    if(highLow[0][:2] == '--'):
+        highLow[1] = highLow[0][2:]
+        highLow[0] = '[N/A]'
+        # If both are null
+        if(highLow[1] == '--'):
+            highLow[1] = '[N/A)]'
+    # If the low value is null '--' swap with N/A and reformat output
+    if(highLow[0][2:] == '--'):
+        highLow[0] = highLow[0][:2]
+        highLow[1] = '[N/A]' 
+   
 
-    #return (data)
-    return data[dayNum][3].split("°")
+    return highLow
 
 #=========================================================================================
 #                                  forecastStringBuilder
 #=========================================================================================
 # Author: Nichoas Ellis
 # Init date:    11/15/18
-# Last Updated: 11/15/18
+# Last Updated: 11/27/18
 #-----------------------------------------------------------------------------------------
 def forecastStringBuilder(forecast, id):
     """
@@ -145,11 +157,12 @@ def forecastStringBuilder(forecast, id):
     """
 
     if id == 0:
-        forecastString = "The weather in {}, {} is {}.\nThe temperature is currently {} *F with a high of {} *F and a low of {}  *F.\nThe wind speed is {}  MPH.\n".format(forecast[0], forecast[1], forecast[3], str(forecast[2]), str(forecast[5]), str(forecast[6]), str(forecast[4])) 
+        forecastString = "The weather in {}, {} is {}.\nThe temperature is currently {} *F with a high of {} *F and a low of {} *F.\nThe wind speed is {} MPH.\n".format(forecast[0], forecast[1], forecast[3], str(forecast[2]), str(forecast[5]), str(forecast[6]), str(forecast[4])) 
     if id == 1:
         forecastString = "The weather today is {} with a high of {} *F and a low of {}  *F.\n".format(forecast[3], str(forecast[5]), str(forecast[6]))
     if id == 2:
         forecastString = "The weather on {} will be {} with a high of {} *F and a low of {} *F.\n".format(forecast[7], forecast[3], str(forecast[5]), str(forecast[6]))
+    
     return forecastString
 
 
@@ -157,8 +170,8 @@ def forecastStringBuilder(forecast, id):
 #                                  getForecastData
 #=========================================================================================
 # Author: Nichoas Ellis
-# Init date: 	11/13/18
-# Last Updated: 11/15/18
+# Init date:    11/13/18
+# Last Updated: 11/27/18
 #-----------------------------------------------------------------------------------------
 def getForecastData(zipcode, response, dayNum, dayOfWeek):
     """
@@ -173,8 +186,10 @@ def getForecastData(zipcode, response, dayNum, dayOfWeek):
     city        = zipCodeInfo["city"].lower().title()
     state       = zipCodeInfo["state"]
     currentTemp = response["main"]["temp"]
+    currentTemp = int(currentTemp)
     description = response["weather"][0]["description"]
     winds       = response["wind"]["speed"]
+    winds       = int(winds)
 
     # Take current date's high's and lows
     highLow     = getHighLows(zipcode, dayNum)
@@ -190,7 +205,7 @@ def getForecastData(zipcode, response, dayNum, dayOfWeek):
 #                                  getFiveDay
 #=========================================================================================
 # Author: Nichoas Ellis
-# Init date: 	11/13/18
+# Init date:    11/13/18
 # Last Updated: 11/15/18
 #-----------------------------------------------------------------------------------------
 def getFiveDay(zipcode):
@@ -226,7 +241,6 @@ def getFiveDay(zipcode):
     forecast += forecastStringBuilder(forecast2, 2) + forecastStringBuilder(forecast3, 2) 
     forecast += forecastStringBuilder(forecast4, 2) + forecastStringBuilder(forecast5, 2)
     
-    # Send back forecast
     return forecast
 
 
@@ -248,7 +262,6 @@ def getWeather(zipcode):
     # Builds the forecast string
     forecast = getForecastData(zipcode, curResponse, 1, "null")
 
-    # Send back forecast
     return forecastStringBuilder(forecast, 0)
 
 
@@ -272,20 +285,6 @@ def tweetGreenvilleWeather():
 
 
 #=========================================================================================
-#                                  directMessage
-#=========================================================================================
-# Author:
-# Init date:
-# Last Updated:
-#-----------------------------------------------------------------------------------------
-def directMessage():
-
-    # See Team-3-Twitter-Bot/TwitterAPI_Test/test.py
-
-    return 0
-
-
-#=========================================================================================
 #                                      main
 #=========================================================================================
 # Author: Nicholas Ellis
@@ -302,13 +301,16 @@ schedule.every().day.at("08:00").do(tweetGreenvilleWeather)
 #tweetGreenvilleWeather()
 
 # Manually print weather
-print(getWeather("27858"))
+#print(getWeather("27858"))
 
 # Manually print five day forecast
-print(getFiveDay("27858"))
+#print(getFiveDay("27858"))
 
 # Manually print daily quote
 #print(get_daily_quote(url))
+
+# Manually print highLow
+print(getHighLows('27858', 1))
 
 
 while True:
