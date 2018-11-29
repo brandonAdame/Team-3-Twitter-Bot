@@ -44,11 +44,14 @@ def checkDM():
                                 event = dmMessage.split(" ")
                                 if (int(len((event))<1)):
                                     if event[1] == "eventTypes":
+                                        print(event)
                                         sendEventHelp(dmFrom)
                                     else:
                                         sendHelp(dmFrom)
+                                        sendEventHelp(dmFrom)
                                 else:
                                     sendHelp(dmFrom)
+                                    sendEventHelp(dmFrom)
                             elif (command == "add"):
                                 event = dmMessage.split(" ")
                                 print(event)
@@ -69,6 +72,10 @@ def checkDM():
                                 sendDM(dmFrom, database.unsubAll(dmFrom))
                             elif (command == "unsub"):
                                 #TODO !unsub
+
+                                event = dmMessage.split(" ")
+                                print(event)
+
                                 print("not done")
                             elif (command == "info"):
 
@@ -129,9 +136,10 @@ def markDMasRead(messageID):
 def sendHelp(twitterID):
     #TODO Format real command help to fit in a DM.
     sendDM(twitterID, "NOTE: This Twitter bot is not finished and may be unstable.  Follow @csci3030team3 to be notifyed when it is ready.")
-    sendDM(twitterID, "Add a new event by sending '!add [eventType] [parameters1] [parameters2]...'  Type !help eventTypes for a list of events.")
+    #sendDM(twitterID, "Add a new event by sending '!add [eventType] [parameters1] [parameters2]...'")
     sendDM(twitterID, "See a list of the events you are signed up for by sending '!info'")
     sendDM(twitterID, "Unsubscribe from an event by sending '!unsub [eventID]' or unsubscribe from all events by sending '!unsubAll'")
+    sendDM(twitterID, "Add a new event by sending '!add [eventType] [parameters1] [parameters2]...'")
     print(database.addMessage("checkDMs.py", "received", "User " + twitterID + " asked for help."))
     ##print(database.addMessage("checkDMs.py", "sent", "User " + twitterID + " was sent help."))
 
