@@ -23,10 +23,10 @@ A twitter bot that messages users the weather based on conditions that they spec
 ==Message Formatting:==
 
 ```
-!help				- Returns
-!info				- Returns a list of events the user 
-!unsub [eventID]	- Unsubscribes a user from an event
-!unsubAll			- Unsubscribes a user from all events
+!help               - Returns
+!info               - Returns a list of events the user 
+!unsub [eventID]    - Unsubscribes a user from an event
+!unsubAll           - Unsubscribes a user from all events
 !
 
 ```
