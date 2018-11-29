@@ -25,7 +25,7 @@ A twitter bot that messages users the weather based on conditions that they spec
 ```
 !help 				- Returns
 !info				- Returns a list of events the user 
-!unsub [eventID] 	- Unsubscribes a user from an event
+!unsub [eventID]	- Unsubscribes a user from an event
 !unsubAll 			- Unsubscribes a user from all events
 !
 
