@@ -23,12 +23,16 @@ A twitter bot that messages users the weather based on conditions that they spec
 ==Message Formatting:==
 
 ```
-!help               - Returns
-!info               - Returns a list of events the user 
+!help               - Returns a list of commands available to the user
+!info               - Returns a list of events the user
+!info [eventID]
 !unsub [eventID]    - Unsubscribes a user from an event
 !unsubAll           - Unsubscribes a user from all events
-!
-
+!add [eventType] [parameters1] [parameters2] [parameters3]...
+  !add localWeather [zipCode] [time to send weather, optional]
+  !add dailyQuote
+  !add word
+  !add dailyStocks [stock symbol]
 ```
 
 Message Example:
