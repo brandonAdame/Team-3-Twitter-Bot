@@ -28,6 +28,7 @@ General Commnads:
 !info [eventID]     - Returns information about an event
 !unsub [eventID]    - Unsubscribes a user from an event
 !unsubAll           - Unsubscribes a user from all events
+!time               - Responds with the server time (GMT)
 ```
 
 Event Commands:
