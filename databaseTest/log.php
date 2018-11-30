@@ -4,7 +4,7 @@ require "connect.php";
 if(isset($_GET['lastActive'])) {
 header('Content-Type: text/plain');
 	$lastAction = mysqli_real_escape_string($myConnection, $_GET['lastActive']);
-	$result = mysqli_query($myConnection, "SELECT * FROM `log` WHERE script='$lastAction' LIMIT 1") or die(mysqli_error($myConnection));
+	$result = mysqli_query($myConnection, "SELECT * FROM `log` WHERE script='$lastAction' ORDER BY `date` DESC LIMIT 1") or die(mysqli_error($myConnection));
 		while($row = mysqli_fetch_array($result)) {
 		$date = $row['date'];
 		echo $date;
@@ -20,7 +20,12 @@ header('Content-Type: text/plain');
 		else{$script = "main.py";}
 		if(isset($_GET['type'])) {$type = mysqli_real_escape_string($myConnection, $_GET['type']);}
 		else{$type = "Undefined";}
-		if(isset($_GET['message'])) {$message = mysqli_real_escape_string($myConnection, $_GET['message']);
+		if(isset($_GET['message'])) {
+		$message = mysqli_real_escape_string($myConnection, $_GET['message']);
+		$message = str_replace("\r"," ",$message);
+		$message = str_replace("\n"," ",$message);
+		$message = str_replace("\t"," ",$message);
+		$message = str_replace("     "," ",$message);
 
 		$result = mysqli_query($myConnection, "INSERT INTO `log` (`script`, `type`, `message`) VALUES ('$script', '$type', '$message');") or die(mysqli_error($myConnection));
 

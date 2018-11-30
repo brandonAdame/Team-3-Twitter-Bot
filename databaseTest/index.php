@@ -17,7 +17,7 @@ $sql = "SELECT * FROM events WHERE idNumber=".mysqli_real_escape_string($myConne
 $twitterAccount = mysqli_real_escape_string($myConnection, $_GET['twitterAccount']);
 $sql = "SELECT * FROM events WHERE twitterAccount=\"$twitterAccount\"";
 }else if (isset($_GET['viewer'])){
-$sql = "SELECT * FROM events ORDER BY nextRunTime ASC LIMIT 25";
+$sql = "SELECT * FROM events ORDER BY nextRunTime DESC LIMIT 25";
 }else{$sql = "SELECT * FROM events ORDER BY nextRunTime ASC LIMIT 1";}
 
 //echo $sql . "\n\n";
