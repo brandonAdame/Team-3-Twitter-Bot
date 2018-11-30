@@ -214,7 +214,7 @@ tweetGreenvilleWeather()
 
 #print (getHighLows("Greenville", "NC", "27858")[1][3])
 
-#getHighLows("Greenville", "NC", "27858")
+getHighLows("Greenville", "NC", "27858")
 
 while True:
     schedule.run_pending()

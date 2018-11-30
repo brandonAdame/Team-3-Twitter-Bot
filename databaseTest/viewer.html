@@ -1,0 +1,251 @@
+<html>
+<head>
+<title>Team 3 Twitter Bot Viewer</title>
+
+<style>
+body{font-family:"Arial";margin:0;}
+
+#header{margin:0;padding-left:5%;padding-right:5%;width:90%;background-color:black;color:white;height:7vh;}
+.col{float:right;width:19%;padding-left:.5%;padding-right:.5%;height:90vh;overflow:auto;}
+.col span{font-size:10px;}
+hr {height:2px;background-color:black;border-style:none;}
+#footer{color:white;background-color:black;height:3vh;}
+</style>
+
+</head>
+
+<body>
+<div id="header"><h1>Team 3 Twitter Bot - @csci3030team3</h1></div>
+
+<div id="errors" class="col" style="background-color:gold;">
+<h2>Errors</h2><hr />
+Loading...<br /><hr />
+</div>
+
+<div id="sent" class="col" style="background-color:purple;color:white;">
+<h2>Messages Sent</h2>
+Loading...<br /><hr />
+</div>
+
+<div id="check" class="col" style="background-color:gold;">
+<h2>Messages Received</h2>
+Loading...<br /><hr />
+</div>
+
+<div id="tweets" class="col" style="background-color:purple;color:white;">
+<h2>Tweets</h2>
+Loading...<br /><hr />
+</div>
+
+<div id = "events" class="col" style="background-color:gold;">
+<h2>Upcoming Events</h2>
+</div>
+
+<br style="clear:both;" />
+
+<div id="footer">footer</div>
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+function getTweets(){
+var oReq = new XMLHttpRequest();
+	oReq.addEventListener("load", getTweetsGo);
+	oReq.open("GET", "log.php?action=get&type=tweets");
+	oReq.send();
+}
+
+function getTweetsGo() {
+	var obj = JSON.parse(this.responseText);
+	console.log(obj.log[0].type);
+	var count = 0;
+	var string = "<h2>Tweets</h2><hr />";
+	while (count < 24){
+	console.log(obj.log[count].type);
+	string = string + obj.log[count].message +"<br /><span class='small'>"+obj.log[count].date+" | " + obj.log[count].script+" | ID: "+ obj.log[count].id +"</span><hr />";
+	count = count + 1;
+	}
+document.getElementById("tweets").innerHTML = string;
+setTimeout(getTweets, 5000);
+}
+
+function getReceived(){
+var oReq = new XMLHttpRequest();
+	oReq.addEventListener("load", getReceivedGo);
+	oReq.open("GET", "log.php?action=get&type=received");
+	oReq.send();
+}
+
+function getReceivedGo() {
+	var obj = JSON.parse(this.responseText);
+	console.log(obj.log[0].type);
+	var count = 0;
+	var string = "<h2>Messages Received</h2><hr />";
+	while (count < 24){
+	console.log(obj.log[count].type);
+	string = string + obj.log[count].message +"<br /><span class='small'>"+obj.log[count].date+" | " + obj.log[count].script+" | ID: "+ obj.log[count].id +"</span><hr />";
+	count = count + 1;
+	}
+document.getElementById("check").innerHTML = string;
+setTimeout(getReceived, 5000);
+}
+
+function getSent(){
+var oReq = new XMLHttpRequest();
+	oReq.addEventListener("load", getSentGo);
+	oReq.open("GET", "log.php?action=get&type=sent");
+	oReq.send();
+}
+
+function getSentGo() {
+	var obj = JSON.parse(this.responseText);
+	console.log(obj.log[0].type);
+	var count = 0;
+	var string = "<h2>Messages Sent</h2><hr />";
+	while (count < 24){
+	console.log(obj.log[count].type);
+	string = string + obj.log[count].message +"<br /><span class='small'>"+obj.log[count].date+" | " + obj.log[count].script+" | ID: "+ obj.log[count].id +"</span><hr />";
+	count = count + 1;
+	}
+document.getElementById("sent").innerHTML = string;
+setTimeout(getSent, 5000);
+}
+
+function getErrors(){
+var oReq = new XMLHttpRequest();
+	oReq.addEventListener("load", getErrorsGo);
+	oReq.open("GET", "log.php?action=get&type=error");
+	oReq.send();
+}
+
+function getErrorsGo() {
+	var obj = JSON.parse(this.responseText);
+	console.log(obj.log[0].type);
+	var count = 0;
+	var string = "<h2>Errors</h2><hr />";
+	while (count < 24){
+	console.log(obj.log[count].type);
+	string = string + obj.log[count].message +"<br /><span class='small'>"+obj.log[count].date+" | " + obj.log[count].script+" | ID: "+ obj.log[count].id +"</span><hr />";
+	count = count + 1;
+	}
+document.getElementById("errors").innerHTML = string;
+setTimeout(getErrors, 5000);
+}
+
+function getEvents(){
+var oReq = new XMLHttpRequest();
+	oReq.addEventListener("load", getEventsGo);
+	oReq.open("GET", "index.php?index.php?viewer");
+	oReq.send();
+}
+
+function getEventsGo() {
+	var obj = JSON.parse(this.responseText);
+	var count = 0;
+	var string = "<h2>Upcoming Events</h2><hr />";
+	console.log(obj);
+	while (count < 1){
+console.log(count);
+	string = string + "<b>"+obj.events[count].id+"</b>: " + obj.events[count].eventType +"<br /><span class='small'>Next Run Time: "+obj.events[count].nextRunTime+" | Last Run Time: " + obj.events[count].lastRunTime+"</span><hr />";
+	count = count + 1;
+	}
+document.getElementById("events").innerHTML = string;
+setTimeout(getEvents, 5000);
+}
+
+/*function loadJSON(path, success, error)
+{
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function()
+    {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                if (success)
+                    success(JSON.parse(xhr.responseText));
+            } else {
+                if (error)
+                    error(xhr);
+            }
+        }
+    };
+    xhr.open("GET", path, true);
+    xhr.send();
+}*/
+
+function httpGet(theUrl)
+{
+    if (window.XMLHttpRequest)
+    {// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+    }
+    else
+    {// code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange=function()
+    {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200)
+        {
+		console.log(xmlhttp.responseText);
+            return xmlhttp.responseText;
+        }
+    }
+    xmlhttp.open("GET", theUrl, false );
+    xmlhttp.send();    
+}
+
+function footer(){
+xmlhttp=new XMLHttpRequest();
+xmlhttp.onreadystatechange=function(){if (xmlhttp.readyState==4 && xmlhttp.status==200){console.log(xmlhttp.responseText);
+checkDM = xmlhttp.responseText;
+}}
+xmlhttp.open("GET", "log.php?lastActive=checkDM.py", false );
+xmlhttp.send();
+
+xmlhttp2=new XMLHttpRequest();
+xmlhttp2.onreadystatechange=function(){if (xmlhttp2.readyState==4 && xmlhttp2.status==200){console.log(xmlhttp2.responseText);
+sendDM = xmlhttp2.responseText;
+}}
+xmlhttp2.open("GET", "log.php?lastActive=sendDM.py", false );
+xmlhttp2.send();
+
+xmlhttp3=new XMLHttpRequest();
+xmlhttp3.onreadystatechange=function(){if (xmlhttp3.readyState==4 && xmlhttp3.status==200){console.log(xmlhttp3.responseText);
+main = xmlhttp3.responseText;
+}}
+xmlhttp3.open("GET", "log.php?lastActive=main.py", false );
+xmlhttp3.send();
+
+xmlhttp4=new XMLHttpRequest();
+xmlhttp4.onreadystatechange=function(){if (xmlhttp4.readyState==4 && xmlhttp4.status==200){console.log(xmlhttp4.responseText);
+NWSPublicAlerts_twitter = xmlhttp4.responseText;
+}}
+xmlhttp4.open("GET", "log.php?lastActive=NWSPublicAlerts_twitter.py", false );
+xmlhttp4.send();
+
+	//checkDM = httpGet("log.php?lastActive=checkDM.py");
+	//sendDM = httpGet("log.php?lastActive=sendDM.py");
+	//main = httpGet("log.php?lastActive=main.py");
+	//NWSPublicAlerts_twitter = httpGet("log.php?lastActive=NWSPublicAlerts_twitter.py");
+	document.getElementById("footer").innerHTML = "<b>Last Active:</b> checkDM.py: " + checkDM + " | sendDM.py: " + sendDM + " | main.py: " + main + " | NWSPublicAlerts_twitter.py: " + NWSPublicAlerts_twitter;
+setTimeout(footer, 30000);
+}
+
+function loadAll(){
+getEvents();
+getErrors();
+getSent();
+getReceived();
+getTweets();
+footer()
+}
+
+loadAll();
+
+//setInterval(loadAll(), 5000, 5000);
+
+</script>
+
+</html>

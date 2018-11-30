@@ -13,6 +13,7 @@ from datetime import date
 import calendar
 from requests import get #Send HTTP Requests. 
 from bs4 import BeautifulSoup
+import database as database
 
 
 #=========================================================================================
@@ -125,21 +126,24 @@ def getHighLows(zipcode, dayNum):
     for tr in soup.find_all('tr'):
         values = [td.text for td in tr.find_all('td')]
         data.append(values)
-    
-    highLow = data[dayNum][3].split("°")
-    
+
+    temp = data[dayNum][3].encode('ascii', 'ignore').decode('ascii')
+    print(temp)
+    highLow = [temp[0:len(temp)-2], temp[len(temp)-2:]]
+
+
+
     # If the high value is null '--' swap with N/A and reformat output
-    if(highLow[0][:2] == '--'):
-        highLow[1] = highLow[0][2:]
+    if (highLow[0][:2] == '--'):
+        #highLow[1] = highLow[0][2:]
         highLow[0] = '[N/A]'
         # If both are null
-        if(highLow[1] == '--'):
+        if (highLow[1] == '--'):
             highLow[1] = '[N/A)]'
     # If the low value is null '--' swap with N/A and reformat output
-    if(highLow[0][2:] == '--'):
+    if (highLow[0][2:] == '--'):
         highLow[0] = highLow[0][:2]
-        highLow[1] = '[N/A]' 
-   
+        highLow[1] = '[N/A]'
 
     return highLow
 

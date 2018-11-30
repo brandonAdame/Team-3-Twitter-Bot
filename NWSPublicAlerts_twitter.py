@@ -3,6 +3,8 @@ import time
 import datetime
 import tweepy
 import requests
+import database as database
+
 ##Get weather alerts from The National Weather Service once a minute.  If they are new, it prints them to the consolse otherwise it skips them.
 
 tweetSkipper = True;
@@ -70,6 +72,7 @@ while True:
                 count_skipped += 1
         else:
             print("[" + str(datetime.datetime.now()) +", API Test/NWSPublicAlerts_twitter.py] There are no active watches, warnings or advisories")
+        database.addMessage("NWSPublicAlerts_twitter.py", "online", "Script NWSPublicAlerts_twitter.py is still working.")
 
     #print("[" + str(datetime.datetime.now()) +", API Test/NWSPublicAlerts_twitter.py] "+str(count_alerted) + " new alerts found.")
     #print("[" + str(datetime.datetime.now()) +", API Test/NWSPublicAlerts_twitter.py] " + str(count_skipped) + " old alerts skipped.\n")

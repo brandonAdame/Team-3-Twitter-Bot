@@ -23,9 +23,11 @@ $newNextRunTime =  mysqli_real_escape_string($myConnection, $_GET['nextSendTime'
 
 }else{
 
-	$tomorrow = new DateTime('tomorrow');
+	$tomorrow = new DateTime('today');
+//	echo $tomorrow . "<br />";
+	
 
-	//echo $tomorrow->format('Y-m-d H:i:s') . "\n";
+	//echo $now->format('Y-m-d H:i:s') . "\n";
 
 		if ($eventType == "localWeather"){
 			$result = mysqli_query($myConnection, "SELECT * FROM localWeather WHERE idNumber=$id LIMIT 1") or die(mysqli_error($myConnection));
@@ -40,6 +42,28 @@ $newNextRunTime =  mysqli_real_escape_string($myConnection, $_GET['nextSendTime'
 		}else{
 			$newNextRunTime = $tomorrow->format('Y-m-d') . " " . $now->format('H:i:s');
 		}
+
+//echo ($tomorrow < $now);
+
+	if ($tomorrow < $now){
+
+	$tomorrow = new DateTime('tomorrow');
+
+			if ($eventType == "localWeather"){
+				$result = mysqli_query($myConnection, "SELECT * FROM localWeather WHERE idNumber=$id LIMIT 1") or die(mysqli_error($myConnection));
+				while($row = mysqli_fetch_array($result)) {
+					$sendTime = $row['sendTime'];
+				}
+				$newNextRunTime = $tomorrow->format('Y-m-d') . " " . $sendTime;
+			}else if ($eventType == "dailyStocks"){
+				$newNextRunTime = $tomorrow->format('Y-m-d') . " 17:30:00";
+			}else if ($eventType == "dailyQuote"){
+				$newNextRunTime = $tomorrow->format('Y-m-d') . " 8:00:00";
+			}else{
+				$newNextRunTime = $tomorrow->format('Y-m-d') . " " . $now->format('H:i:s');
+			}
+
+	}
 
 }
 
