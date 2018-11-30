@@ -4,6 +4,7 @@ import database as database
 import time
 import traceback
 import sys
+import datetime
 
 #@3030team3
 consumer_key = "ThbfGVBrpRwMKu9FVgR6HjA1m"
@@ -90,6 +91,8 @@ def checkDM():
                                     for e in events:
                                         print(eventToString(e))
                                         sendDM(dmFrom, eventToString(e))
+                            elif (command == "time"):
+                                whatTimeIsIt(dmFrom)
                             else:
                                 sendDM(dmFrom, "Sorry, we do not understand the command " + command + ".  Use !help for a list of commands.")
                                 database.addMessage("checkDM.py", "error", "Unknown command: " + command)
@@ -123,10 +126,11 @@ def eventToString(event):
     return ret
 
 def sendDM(twitterID, message):
-    event = '{"event":{"type":"message_create","message_create":{"target":{"recipient_id":"%s"},"message_data":{"text":"%s"}}}}' % (twitterID, message)
+    event = '{"event":{"type":"message_create","message_create":{"target":{"recipient_id":"%s"},"message_data":{"text":"%s"}}}}' % (twitterID, twitterStringCleaner(message))
     r = api.request('direct_messages/events/new', event)
     print(str(r.status_code) + ": " + message)
     print(database.addMessage("checkDMs.py", "sent", "User " + twitterID + " was sent: " + message))
+    time.sleep(2)
 
 def markDMasRead(messageID):
     text_file = open("messagesSent.txt", "a")
@@ -135,20 +139,12 @@ def markDMasRead(messageID):
 
 def sendHelp(twitterID):
     #TODO Format real command help to fit in a DM.
-    sendDM(twitterID, "NOTE: This Twitter bot is not finished and may be unstable.  Follow @csci3030team3 to be notifyed when it is ready.")
-    #sendDM(twitterID, "Add a new event by sending '!add [eventType] [parameters1] [parameters2]...'")
-    sendDM(twitterID, "See a list of the events you are signed up for by sending '!info'")
-    sendDM(twitterID, "Unsubscribe from an event by sending '!unsub [eventID]' or unsubscribe from all events by sending '!unsubAll'")
-    sendDM(twitterID, "Add a new event by sending '!add [eventType] [parameters1] [parameters2]...'")
+    sendDM(twitterID, "NOTE: This Twitter bot is not finished and may be unstable.  Follow @csci3030team3 to be notifyed when it is ready.\r\n\r\n'!info'\r\n\tSee a list of the events you are signed up for.\r\n'!unsub [eventID]'\r\n\tUnsubscribe from an event.\r\n'!unsubAll'\r\n\tUnsubscribe from all events\r\n'!time'\r\n\tAll times are in GTM London (5 hours before EST New York) See the server time by sending .\r\n'!add [eventType] [parameters1] [parameters2]...'\r\n\tAdd a new event by sending ")
     print(database.addMessage("checkDMs.py", "received", "User " + twitterID + " asked for help."))
     ##print(database.addMessage("checkDMs.py", "sent", "User " + twitterID + " was sent help."))
 
 def sendEventHelp(twitterID):
-    sendDM(twitterID, "Types of events:")
-    sendDM(twitterID, "LOCAL WEATHER: Sends the local weather at the time you want (defalt 8AM).  '!add localWeather [zipCode] [time to send weather, formatted HH:MM:SS (24 hour time).  optional]'")
-    sendDM(twitterID, "DAILY QUOTE*: Sends a daily quote every morning at 7AM.  '!add dailyQuote'")
-    sendDM(twitterID, "DAILY STOCK: Send the value of a stock everyday after the stock market cloeses (5:30PM).  '!add dailyStocks [stock symbol]'")
-    sendDM(twitterID, "WORD OF THE DAY: Sends a daily word every morning at 9AM.  '!add word'")
+    sendDM(twitterID, "Types of events:\r\n\t\r\n\tLOCAL WEATHER:\r\n\t\t'!add localWeather [zipCode] [time to send weather, formatted HH:MM:SS (24 hour time).  optional]'\r\n\t\tSends the local weather at the time you want (defalt 8AM).\r\n\tDAILY QUOTE:\r\n\t\t'!add dailyQuote'\r\n\t\tSends a daily quote every morning at 7AM.\r\n\tDAILY STOCK*:\r\n\t\t'!add dailyStocks [stock symbol]'\r\n\t\tSend the value of a stock everyday after the stock market cloeses (5:30PM).\r\n\tWORD OF THE DAY:\r\n\t\t'!add word'\r\n\t\tSends a daily word every morning at 9AM.")
     print(database.addMessage("checkDMs.py", "received", "User "+twitterID+" asked for event help."))
     ##print(database.addMessage("checkDMs.py", "sent", "User " + twitterID + " was sent event help."))
 
@@ -188,7 +184,11 @@ def decodeLocalWeather(input, twitterID):
     return "localWeather Event ("+r["id"]+") added to database. "
 
 def twitterStringCleaner(input):
-    return input.replace('\r', ' ').replace('\n', ' ').replace('"', '\'').replace('\\', ' ')
+    output = input.replace('\r', '\\r').replace('\n', '\\n').replace('"', '\'').replace('-', ' ').replace('\t', '     ')
+    return output
+
+def whatTimeIsIt(twitterID):
+    sendDM(twitterID, "The server time is " + datetime.datetime.now().strftime("%H:%M:%S") + " GMT (-5 for EST).")
 
 #checkDM()
 while True:

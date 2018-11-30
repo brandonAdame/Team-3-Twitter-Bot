@@ -212,7 +212,7 @@ def updateEventTime(id, nextSendTime):
     return r.json()["events"][0]
 
 def addMessage(script, type, message):
-    apiURL = baseURL + "log.php?script=" + script + "&type=" + type + "&message=" + message
+    apiURL = baseURL + "log.php?script=" + script + "&type=" + type + "&message=" + message.replace('\r', ' ').replace('\n', ' ').replace('t', ' ')
     r = requests.get(apiURL)
     return r.text;
 

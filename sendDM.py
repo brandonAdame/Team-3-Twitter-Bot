@@ -24,7 +24,7 @@ api = TwitterAPI(consumer_key, consumer_secret, access_key, access_secret)
 tryCounter = 0
 
 def tick():
-    print(database.addMessage("sendDM.py", "online", "Script sendDM.py is still working."))
+    #print(database.addMessage("sendDM.py", "online", "Script sendDM.py is still working."))
     global tryCounter
     tryCounter = tryCounter + 1
     print("Next event triggers at " + str(getNextTime(True)))
@@ -35,7 +35,7 @@ def tick():
         try:
             if (event["eventType"] == "localWeather"):
                 print(event["location"])
-                sendDM(event["twitterAccount"], weather.getWeather(event["location"]))
+                sendDM(event["twitterAccount"], weather.getWeather(str(event["location"])))
                 database.updateEventTimeAuto(event["id"])
                 print("Run localWeather event #" + event["id"])
             elif (event["eventType"] == "dailyStock"):
@@ -52,6 +52,7 @@ def tick():
                 print("Run word event #" + event["id"])
 
             tryCounter = 0
+            database.addMessage("sendDM.py", "online", "Event #" + event["id"] + " was sent.")
 
         except Exception:
             exc_type, exc_value, exc_traceback = sys.exc_info()
@@ -62,6 +63,7 @@ def tick():
             else:
                 database.updateEventTimeAuto(event["id"])
                 print("Event #" + event["id"] + " failed 3 times.  It was skipped.")
+                database.addMessage("sendDM.py", "error", "Event #" + event["id"] + " failed 3 times.  It was skipped.")
 
 
 #TODO Don't let program sleep for 6+ hours because any new things scheduled during that time will not run until the next day
@@ -87,12 +89,13 @@ def getNextTime(limit):
     return nextDate
 
 def sendDM(twitterID, message):
-    event = '{"event":{"type":"message_create","message_create":{"target":{"recipient_id":"%s"},"message_data":{"text":"%s"}}}}' % (twitterID, twitterStringCleaner(message))
+    event = "{\"event\":{\"type\":\"message_create\",\"message_create\":{\"target\":{\"recipient_id\":\"%s\"},\"message_data\":{\"text\":\"%s\"}}}}" % (twitterID, twitterStringCleaner(message))
     r = api.request('direct_messages/events/new', event)
     print(str(r.status_code) + ": " + message)
+    time.sleep(2)
 
 def twitterStringCleaner(input):
-    output = input.replace('\r', ' ').replace('\n', ' ').replace('"', '\'').replace('\\', ' ').replace('-', ' ').replace('\t', ' ')
+    output = input.replace('\r', '\\r').replace('\n', '\\n').replace('"', '\'').replace('-', ' ').replace('\t', '     ')
     return output
 
 # sendDM("1039183691510165505", twitterStringCleaner(getDailyQuote.get_daily_quote("https://www.brainyquote.com/quote_of_the_day")))

@@ -298,7 +298,7 @@ def tweetGreenvilleWeather():
 
     # Tweet the forecast
     api.update_status(status=forecast)
-    database.addMessage("main.py", "tweets", "The weather was tweeted.  " + forecast)
+    database.addMessage("main.py", "tweets", "The weather was tweeted.  " + forecast).replace('\r', ' ').replace('\n', ' ').replace('"', '\'').replace('\\', ' ').replace('-', ' ').replace('\t', ' ')
     database.addMessage("main.py", "online", "Script main.py is still working.")
 
 # =========================================================================================
