@@ -79,16 +79,19 @@ def checkDM():
                             elif (command == "unsub"):
                                 #TODO !unsub
 
-                                event = dmMessage.split(" ")
+                                message = dmMessage.split(" ")
+                                event = database.getByID(message[1])
+                                if (dmFrom == event["twitterAccount"]):
+                                    sendDM(dmFrom, database.unsub(message[1]))
+                                else:
+                                    sendDM(dmFrom, "You can only delete your own events.")
                                 print(event)
 
-                                print("not done")
                             elif (command == "info"):
 
                                 if (len(dmMessage.split(" ")) > 1):
                                     print(dmMessage.split(" ")[1])
                                     sendDM(dmFrom, eventToString(database.getByID(dmMessage.split(" ")[1])))
-                                    #TODO !info [eventID]
                                 else:
                                     yourList = "LIST OF YOUR EVENTS:"
                                     print(len(dmMessage.split(" ")))
@@ -148,7 +151,7 @@ def markDMasRead(messageID):
 
 def sendHelp(twitterID):
     #TODO Format real command help to fit in a DM.
-    sendDM(twitterID, "NOTE: This Twitter bot is not finished and may be unstable.  Follow @csci3030team3 to be notifyed when it is ready.\r\n\r\n'!info'\r\n\tSee a list of the events you are signed up for.\r\n'!unsub [eventID]'\r\n\tUnsubscribe from an event.\r\n'!unsubAll'\r\n\tUnsubscribe from all events\r\n'!time'\r\n\tAll times are in GTM London (5 hours before EST New York) See the server time by sending .\r\n'!add [eventType] [parameters1] [parameters2]...'\r\n\tAdd a new event by sending ")
+    sendDM(twitterID, "NOTE: This Twitter bot is not finished and may be unstable.  Follow @csci3030team3 to be notifyed when it is ready.\r\n\r\n'!info'\r\n\tSee a list of the events you are signed up for.\r\n'!unsub [eventID]'\r\n\tUnsubscribe from an event.\r\n'!unsubAll'\r\n\tUnsubscribe from all events\r\n'!time'\r\n\tAll times are in GTM London (5 hours before EST New York) See the server time by sending .\r\n'!add [eventType] [parameters1] [parameters2]...'\r\n\tAdd a new event.")
     print(database.addMessage("checkDMs.py", "received", "User " + twitterID + " asked for help."))
     ##print(database.addMessage("checkDMs.py", "sent", "User " + twitterID + " was sent help."))
 
