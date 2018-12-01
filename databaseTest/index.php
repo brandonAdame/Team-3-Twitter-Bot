@@ -52,6 +52,12 @@ $result = mysqli_query($myConnection, $sql) or die(mysqli_error($myConnection));
 					$symbol = $row['symbol'];
 				}
 				echo ", \"symbol\": \"$symbol\"";
+		}else if ($eventType == "remindMe"){
+			$result2 = mysqli_query($myConnection, "SELECT * FROM remindMe WHERE idNumber=$id") or die(mysqli_error($myConnection));
+				while($row = mysqli_fetch_array($result2)) {
+					$message = $row['message'];
+				}
+				echo ", \"message\": \"$message\"";
 		}
 echo "}";
 $count = $count + 1;
