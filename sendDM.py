@@ -43,7 +43,7 @@ def tick():
                 print("Run dailyStock #" + event["id"])
             elif (event["eventType"] == "dailyQuote"):
                 print(int(event["twitterAccount"]))
-                sendDM(event["twitterAccount"], getDailyQuote.get_daily_quote("https://www.brainyquote.com/quote_of_the_day").encode('ascii', 'ignore').decode('ascii').replace('\n', ""))
+                sendDM(event["twitterAccount"], getDailyQuote.get_daily_quote())
                 database.updateEventTimeAuto(event["id"])
                 print("Run daily quote #" + event["id"])
             elif (event["eventType"] ==  "dailyWord"):
@@ -62,7 +62,7 @@ def tick():
                 time.sleep(10)
             else:
                 database.updateEventTimeAuto(event["id"])
-                print("Event #" + event["id"] + " failed 3 times.  It was skipped.")
+                print("Event " + event["id"] + " failed 3 times.  It was skipped.")
                 database.addMessage("sendDM.py", "error", "Event #" + event["id"] + " failed 3 times.  It was skipped.")
 
 
@@ -98,7 +98,7 @@ def twitterStringCleaner(input):
     output = input.replace('\r', '\\r').replace('\n', '\\n').replace('"', '\'').replace('-', ' ').replace('\t', '     ')
     return output
 
-# sendDM("1039183691510165505", twitterStringCleaner(getDailyQuote.get_daily_quote("https://www.brainyquote.com/quote_of_the_day")))
+#sendDM("1039183691510165505", getDailyQuote.get_daily_quote())
 
 #print ()
 #getNextTime()

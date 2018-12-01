@@ -63,7 +63,7 @@ def get_daily_quote():
     author = author_containers[1].text
 
     # print(type("{}\n-{}".format(dq, author)))
-    return "{}\n-{}".format(dq, author)
+    return "{}\n\t-{}".format(dq, author)
 
 if __name__ == '__main__':
     get_daily_quote()

@@ -85,12 +85,14 @@ def checkDM():
                                     sendDM(dmFrom, eventToString(database.getByID(dmMessage.split(" ")[1])))
                                     #TODO !info [eventID]
                                 else:
-                                    sendDM(dmFrom, "LIST OF YOUR EVENTS:")
+                                    yourList = "LIST OF YOUR EVENTS:"
                                     print(len(dmMessage.split(" ")))
                                     events = database.getByUsername(dmFrom)
                                     for e in events:
                                         print(eventToString(e))
-                                        sendDM(dmFrom, eventToString(e))
+                                        yourList = yourList + "\r\n\t" + eventToString(e)
+                                    sendDM(dmFrom, yourList)
+
                             elif (command == "time"):
                                 whatTimeIsIt(dmFrom)
                             else:
@@ -113,7 +115,7 @@ def checkDM():
     database.addMessage("checkDM.py", "online", "Script checkDM.py is still working.")
 
 def eventToString(event):
-    ret = "Event #" + event["id"] + " is an " + event["eventType"] + " event."
+    ret = "Event #" + event["id"] + " is an " + event["eventType"] + " event.\r\n\t\t"
     if (event["eventType"] == "localWeather"):
         ret = ret + "  This event send the weather for " + event["location"] + "  every day at " + event["sendTime"] + "."
     elif (event["eventType"] == "dailyWord"):
