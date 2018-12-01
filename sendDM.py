@@ -50,6 +50,9 @@ def tick():
                 sendDM(event["twitterAccount"], word.getWordOfDay())
                 database.updateEventTimeAuto(event["id"])
                 print("Run word event #" + event["id"])
+            elif (event["eventType"] == "remindMe"):
+                sendDM(event["twitterAccount"], "REMINDER: " + event["message"])
+                database.updateEventTimeAuto(event["id"])
 
             tryCounter = 0
             database.addMessage("sendDM.py", "online", "Event #" + event["id"] + " was sent.")

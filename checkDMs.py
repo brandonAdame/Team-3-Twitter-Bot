@@ -67,6 +67,11 @@ def checkDM():
                                 elif (event[1] == "word"):
                                     database.addDailyWord(dmFrom)
                                     sendDM(dmFrom, "You will receive a DM of a word everyday at 9 AM.")
+                                elif (event[1] == "remindme"):
+                                    event = dmMessage.split(" ", 4)
+                                    print(event)
+                                    database.addRemindMe(dmFrom, event[2] + " " + event[3], twitterStringCleaner(event[4]))
+                                    #sendDM(dmFrom, "You will receive a DM of a word everyday at 9 AM.")
                                 else:
                                     print(sendDM(dmFrom, "Unknown add command.  Type !help for more info."))
                             elif (command == "unsuball"):
@@ -124,6 +129,8 @@ def eventToString(event):
         ret = ret + "  This event sends a quote every day at 7:00:00."
     elif (event["eventType"] == "dailyStocks"):
         ret = ret + "  This event sends the stock value of " + event["symbol"] + " every day at 17:30:00."
+    elif (event["eventType"] == "remindMe"):
+        ret = ret + "  This event will send you a reminder (" + event["message"] + ") at " + event["nextRunTime"] + "."
 
     return ret
 
@@ -146,7 +153,7 @@ def sendHelp(twitterID):
     ##print(database.addMessage("checkDMs.py", "sent", "User " + twitterID + " was sent help."))
 
 def sendEventHelp(twitterID):
-    sendDM(twitterID, "Types of events:\r\n\t\r\n\tLOCAL WEATHER:\r\n\t\t'!add localWeather [zipCode] [time to send weather, formatted HH:MM:SS (24 hour time).  optional]'\r\n\t\tSends the local weather at the time you want (defalt 8AM).\r\n\tDAILY QUOTE:\r\n\t\t'!add dailyQuote'\r\n\t\tSends a daily quote every morning at 7AM.\r\n\tDAILY STOCK*:\r\n\t\t'!add dailyStocks [stock symbol]'\r\n\t\tSend the value of a stock everyday after the stock market cloeses (5:30PM).\r\n\tWORD OF THE DAY:\r\n\t\t'!add word'\r\n\t\tSends a daily word every morning at 9AM.")
+    sendDM(twitterID, "Types of events:\r\n\t\r\n\tLOCAL WEATHER:\r\n\t\t'!add localWeather [zipCode] [time to send weather, formatted HH:MM:SS (24 hour time).  optional]'\r\n\t\tSends the local weather at the time you want (defalt 8AM).\r\n\tDAILY QUOTE:\r\n\t\t'!add dailyQuote'\r\n\t\tSends a daily quote every morning at 7AM.\r\n\tDAILY STOCK*:\r\n\t\t'!add dailyStocks [stock symbol]'\r\n\t\tSend the value of a stock everyday after the stock market cloeses (5:30PM).\r\n\tWORD OF THE DAY:\r\n\t\t'!add word'\r\n\t\tSends a daily word every morning at 9AM.\r\n\tREMIND ME:\r\n\t\t'!add remindMe' [data, formatted YYYY-MM-DD] [time, formatted HH:MM:SS] [message]\r\n\tSend you a reminder on the date and time you pick.")
     print(database.addMessage("checkDMs.py", "received", "User "+twitterID+" asked for event help."))
     ##print(database.addMessage("checkDMs.py", "sent", "User " + twitterID + " was sent event help."))
 
@@ -158,8 +165,6 @@ def checkTimeFormat(input):
             return True
         else:
             return False
-
-###
 
 def decodeLocalWeather(input, twitterID):
     passTest = True

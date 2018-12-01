@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0e030749-66de-496d-84d0-afc7ea3c0850" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/checkDMs.py" beforeDir="false" afterPath="$PROJECT_DIR$/checkDMs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/getDailyQuote.py" beforeDir="false" afterPath="$PROJECT_DIR$/getDailyQuote.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/database.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/messagesSent.txt" beforeDir="false" afterPath="$PROJECT_DIR$/messagesSent.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sendDM.py" beforeDir="false" afterPath="$PROJECT_DIR$/sendDM.py" afterDir="false" />
     </list>
@@ -18,17 +16,17 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/Team_3_Twitter_Bot$main.coverage" NAME="main Coverage Results" MODIFIED="1543549125037" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Team_3_Twitter_Bot$NWSPublicAlerts_twitter.coverage" NAME="NWSPublicAlerts_twitter Coverage Results" MODIFIED="1543374880609" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/API Test" />
-    <SUITE FILE_PATH="coverage/Team_3_Twitter_Bot$markAllMessagesAsRead.coverage" NAME="markAllMessagesAsRead Coverage Results" MODIFIED="1543678074115" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Team_3_Twitter_Bot$sendDM.coverage" NAME="sendDM Coverage Results" MODIFIED="1543678553169" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Team_3_Twitter_Bot$markAllMessagesAsRead.coverage" NAME="markAllMessagesAsRead Coverage Results" MODIFIED="1543681993879" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Team_3_Twitter_Bot$sendDM.coverage" NAME="sendDM Coverage Results" MODIFIED="1543684626711" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Team_3_Twitter_Bot$database.coverage" NAME="database Coverage Results" MODIFIED="1543370441215" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Team_3_Twitter_Bot$weather.coverage" NAME="weather Coverage Results" MODIFIED="1543534549787" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Team_3_Twitter_Bot$checkDMs.coverage" NAME="checkDMs Coverage Results" MODIFIED="1543678084769" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TwitterAPI_Test" />
+    <SUITE FILE_PATH="coverage/Team_3_Twitter_Bot$checkDMs.coverage" NAME="checkDMs Coverage Results" MODIFIED="1543682001151" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TwitterAPI_Test" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-677498804">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="14" />
+          <entry key="project.closed" value="15" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.20" value="1" />
           <entry key="project.open.time.31" value="2" />
@@ -38,8 +36,8 @@
           <entry key="project.open.time.41" value="1" />
           <entry key="project.open.time.43" value="1" />
           <entry key="project.open.time.6" value="1" />
-          <entry key="project.open.time.7" value="2" />
-          <entry key="project.opened" value="15" />
+          <entry key="project.open.time.7" value="3" />
+          <entry key="project.opened" value="16" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -57,14 +55,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="7921" />
+          <entry key="py" value="8587" />
           <entry key="txt" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="7921" />
+          <entry key="Python" value="8587" />
         </counts>
       </usages-collector>
     </session>
@@ -74,14 +72,27 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/checkDMs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1278">
-              <caret line="117" column="85" selection-start-line="117" selection-start-column="85" selection-end-line="117" selection-end-column="85" />
+            <state relative-caret-position="446">
+              <caret line="131" column="42" selection-start-line="131" selection-start-column="42" selection-end-line="131" selection-end-column="42" />
               <folding>
                 <element signature="e#0#33#0" expanded="true" />
-                <marker date="1543679172972" expanded="true" signature="613:6810" ph="..." />
-                <marker date="1543679172972" expanded="true" signature="6146:6810" ph="..." />
-                <marker date="1543679172972" expanded="true" signature="8183:8954" ph="..." />
-                <marker date="1543679172972" expanded="true" signature="9192:9194" ph="..." />
+                <marker date="1543685871149" expanded="true" signature="613:7384" ph="..." />
+                <marker date="1543685871149" expanded="true" signature="6555:7384" ph="..." />
+                <marker date="1543685871149" expanded="true" signature="8757:9689" ph="..." />
+                <marker date="1543685871149" expanded="true" signature="9922:9924" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sendDM.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="66">
+              <caret line="53" column="59" selection-start-line="53" selection-start-column="59" selection-end-line="53" selection-end-column="59" />
+              <folding>
+                <element signature="e#0#33#0" expanded="true" />
+                <marker date="1543684697452" expanded="true" signature="4265:4267" ph="..." />
               </folding>
             </state>
           </provider>
@@ -111,22 +122,9 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sendDM.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="100" column="1" selection-start-line="100" selection-start-column="1" selection-end-line="100" selection-end-column="1" />
-              <folding>
-                <element signature="e#0#33#0" expanded="true" />
-                <marker date="1543678532803" expanded="true" signature="4073:4075" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/getDailyQuote.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
+            <state relative-caret-position="1280">
               <caret line="65" column="18" selection-start-line="65" selection-start-column="18" selection-end-line="65" selection-end-column="18" />
             </state>
           </provider>
@@ -135,7 +133,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NWSPublicAlerts_twitter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="524">
+            <state relative-caret-position="1380">
               <caret line="74" column="68" selection-start-line="74" selection-start-column="68" selection-end-line="74" selection-end-column="68" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
@@ -147,11 +145,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4280">
-              <caret line="214" column="145" selection-start-line="214" selection-start-column="145" selection-end-line="214" selection-end-column="145" />
+            <state relative-caret-position="340">
+              <caret line="57" column="123" selection-start-line="57" selection-start-column="123" selection-end-line="57" selection-end-column="123" />
               <folding>
-                <marker date="1543548890039" expanded="true" signature="3052:3426" ph="..." />
-                <marker date="1543548890039" expanded="true" signature="6062:6260" ph="..." />
+                <marker date="1543683164951" expanded="true" signature="1303:1761" ph="..." />
+                <marker date="1543683164951" expanded="true" signature="3561:3935" ph="..." />
+                <marker date="1543683164951" expanded="true" signature="6571:6769" ph="..." />
               </folding>
             </state>
           </provider>
@@ -160,7 +159,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
+            <state relative-caret-position="5760">
               <caret line="299" column="27" selection-start-line="299" selection-start-column="27" selection-end-line="299" selection-end-column="27" />
             </state>
           </provider>
@@ -205,9 +204,9 @@
         <option value="$PROJECT_DIR$/API Test/main.py" />
         <option value="$PROJECT_DIR$/weather.py" />
         <option value="$PROJECT_DIR$/markAllMessagesAsRead.py" />
-        <option value="$PROJECT_DIR$/database.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/getDailyQuote.py" />
+        <option value="$PROJECT_DIR$/database.py" />
         <option value="$PROJECT_DIR$/sendDM.py" />
         <option value="$PROJECT_DIR$/checkDMs.py" />
       </list>
@@ -417,7 +416,7 @@
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1928" height="1036" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.29925054" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.30299786" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -486,14 +485,27 @@
     <entry file="file://$PROJECT_DIR$/TwitterAPI_Test/messagesSent">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/database.py">
+    <entry file="file://$PROJECT_DIR$/getDailyQuote.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4280">
-          <caret line="214" column="145" selection-start-line="214" selection-start-column="145" selection-end-line="214" selection-end-column="145" />
+        <state relative-caret-position="1280">
+          <caret line="65" column="18" selection-start-line="65" selection-start-column="18" selection-end-line="65" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NWSPublicAlerts_twitter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1380">
+          <caret line="74" column="68" selection-start-line="74" selection-start-column="68" selection-end-line="74" selection-end-column="68" />
           <folding>
-            <marker date="1543548890039" expanded="true" signature="3052:3426" ph="..." />
-            <marker date="1543548890039" expanded="true" signature="6062:6260" ph="..." />
+            <element signature="e#0#17#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5760">
+          <caret line="299" column="27" selection-start-line="299" selection-start-column="27" selection-end-line="299" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -504,51 +516,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
+    <entry file="file://$PROJECT_DIR$/database.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="299" column="27" selection-start-line="299" selection-start-column="27" selection-end-line="299" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NWSPublicAlerts_twitter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="74" column="68" selection-start-line="74" selection-start-column="68" selection-end-line="74" selection-end-column="68" />
+        <state relative-caret-position="340">
+          <caret line="57" column="123" selection-start-line="57" selection-start-column="123" selection-end-line="57" selection-end-column="123" />
           <folding>
-            <element signature="e#0#17#0" expanded="true" />
+            <marker date="1543683164951" expanded="true" signature="1303:1761" ph="..." />
+            <marker date="1543683164951" expanded="true" signature="3561:3935" ph="..." />
+            <marker date="1543683164951" expanded="true" signature="6571:6769" ph="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/getDailyQuote.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="65" column="18" selection-start-line="65" selection-start-column="18" selection-end-line="65" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sendDM.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="100" column="1" selection-start-line="100" selection-start-column="1" selection-end-line="100" selection-end-column="1" />
+        <state relative-caret-position="66">
+          <caret line="53" column="59" selection-start-line="53" selection-start-column="59" selection-end-line="53" selection-end-column="59" />
           <folding>
             <element signature="e#0#33#0" expanded="true" />
-            <marker date="1543678532803" expanded="true" signature="4073:4075" ph="..." />
+            <marker date="1543684697452" expanded="true" signature="4265:4267" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/checkDMs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1278">
-          <caret line="117" column="85" selection-start-line="117" selection-start-column="85" selection-end-line="117" selection-end-column="85" />
+        <state relative-caret-position="446">
+          <caret line="131" column="42" selection-start-line="131" selection-start-column="42" selection-end-line="131" selection-end-column="42" />
           <folding>
             <element signature="e#0#33#0" expanded="true" />
-            <marker date="1543679172972" expanded="true" signature="613:6810" ph="..." />
-            <marker date="1543679172972" expanded="true" signature="6146:6810" ph="..." />
-            <marker date="1543679172972" expanded="true" signature="8183:8954" ph="..." />
-            <marker date="1543679172972" expanded="true" signature="9192:9194" ph="..." />
+            <marker date="1543685871149" expanded="true" signature="613:7384" ph="..." />
+            <marker date="1543685871149" expanded="true" signature="6555:7384" ph="..." />
+            <marker date="1543685871149" expanded="true" signature="8757:9689" ph="..." />
+            <marker date="1543685871149" expanded="true" signature="9922:9924" ph="..." />
           </folding>
         </state>
       </provider>

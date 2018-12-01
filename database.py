@@ -52,6 +52,17 @@ def getByUsername(username):
     events = requests.get(apiURL).json()
     return events["events"]
 
+def addRemindMe(twitterAccount, sendTime, message):
+    apiURL = baseURL + "add.php?twitterAccount=" + twitterAccount + "&eventType=remindMe&message=" + message + "&sendTime=" + sendTime
+    r = requests.get(apiURL)
+    print(addMessage("database.py", "received","Added remindMe event to database for " + twitterAccount + " at " + sendTime + "."))
+    if (r.text != "Unknown event type.  Did not add to database."):
+        print(r.text)
+        return r.json()["events"][0]
+
+    else:
+        return r.text
+
 def addLocalWeatherEvent(twitterAccount, location, sendTime):
     """
     Add a new localWeather Event to the database.
