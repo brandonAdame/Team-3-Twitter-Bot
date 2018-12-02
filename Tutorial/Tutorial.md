@@ -8,15 +8,10 @@ A twitter bot that messages users the weather based on conditions that they spec
    - https://twitter.com/csci3030team3
    - [@csci3030team3](https://twitter.com/csci3030team3)
 
-   ==[picture]==
-
 2. Follow for our daily Greenville, NC weather forecast. Tweeted at 8am EST
-
-   ==[picture]==
 
 3. Turn on notifications by selecting the bell icon. This will notify you imeadiatly with our daily forecast tweet.
 
-   ==[picture]==
 
 ## Direct Message Commands
 
