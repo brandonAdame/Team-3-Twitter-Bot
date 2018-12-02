@@ -37,7 +37,7 @@ The following also works: `python -m unittest <module name>`
 
 ## Project Timeline
 
-The project will be based on a weekly sprints. The project will be presented on December 5^th^ at 8-10:30am.
+The project will be based on a weekly sprints. The project will be presented on December 5th at 8-10:30am.
 
 **Weeks:**
 
