@@ -38,6 +38,8 @@ Event Commands:
 
 Message Example:
 
+!help command:
+
 ```
 User: !help
 
@@ -50,5 +52,15 @@ Bot: LOCAL WEATHER: Sends the local weather at the time you want (defalt 8AM).  
 Bot: DAILY QUOTE*: Sends a daily quote every morning at 7AM.  '!add dailyQuote'
 Bot: DAILY STOCK: Send the value of a stock everyday after the stock market cloeses (5:30PM).  '!add dailyStocks [stock symbol]'
 Bot: WORD OF THE DAY: Sends a daily word every morning at 9AM.  '!add word'
+```
+
+!add [eventType]
+
+```
+User: !add dailyquote
+User: !add word
+
+Bot: You will receive a DM of a word everyday at 9 AM.
+Bot: You will receive a DM of a quote everyday at 7 AM.
 ```
 
