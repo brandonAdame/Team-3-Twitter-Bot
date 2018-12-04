@@ -17,7 +17,7 @@ consumer_secret = "lGyzD69pQGupB4lTG3jWG8rszYmVN4CGjFPYGUBTr1EhKdiBxh"
 access_key = "1039183691510165505-IkoKTm8MopQ3PzYVmEgU2NdGmognPL"
 access_secret = "jwWe8WqunRcmqKWgvYyDuUjkyotgfUddeLKcTHYz40ktP"
 twitterID = "1039183691510165505"
-MAX_SLEEP_TIME_BETWEEN_EVENTS = 5 #Event if an event is longer than this time away, the script will recheck for newer events after this minutes.
+MAX_SLEEP_TIME_BETWEEN_EVENTS = 1 #Event if an event is longer than this time away, the script will recheck for newer events after this minutes.
 
 api = TwitterAPI(consumer_key, consumer_secret, access_key, access_secret)
 
@@ -102,6 +102,8 @@ def twitterStringCleaner(input):
     return output
 
 #sendDM("1039183691510165505", getDailyQuote.get_daily_quote())
+
+#print(sendDM(twitterID, getDailyQuote.get_daily_quote()))
 
 #print ()
 #getNextTime()
