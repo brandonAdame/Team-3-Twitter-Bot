@@ -12,8 +12,6 @@ A twitter bot that messages users the weather based on conditions that they spec
 
 3. Turn on notifications by selecting the bell icon. This will notify you imeadiatly with our daily forecast tweet.
 
-   ![IMG_2734](/Users/nickellis/Documents/Classes/CSCI_3030/Project/Team-3-Twitter-Bot/Tutorial/Graphics/IMG_2734.PNG)
-
 ## Direct Message Commands
 
 General Commnads:
