@@ -12,7 +12,7 @@ consumer_secret = "lGyzD69pQGupB4lTG3jWG8rszYmVN4CGjFPYGUBTr1EhKdiBxh"
 access_key = "1039183691510165505-IkoKTm8MopQ3PzYVmEgU2NdGmognPL"
 access_secret = "jwWe8WqunRcmqKWgvYyDuUjkyotgfUddeLKcTHYz40ktP"
 twitterID = "1039183691510165505"
-SLEEP_BETWEEN_CHECKING_DMS = 90 #How many seconds to wait between get DM request (MINIMUM = 60).
+SLEEP_BETWEEN_CHECKING_DMS = 65 #How many seconds to wait between get DM request (MINIMUM = 60).
 
 api = TwitterAPI(consumer_key, consumer_secret, access_key, access_secret)
 
