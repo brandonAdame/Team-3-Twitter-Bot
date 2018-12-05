@@ -12,6 +12,8 @@ A twitter bot that messages users the weather based on conditions that they spec
 
 3. Turn on notifications by selecting the bell icon. This will notify you imeadiatly with our daily forecast tweet.
 
+4. DM the bot to recive a message for your local weather at the time you need it using the commands below.  Also sign up for daily quotes and the word of the day or a reminder.
+
 ## Direct Message Commands
 
 General Commnads:
@@ -29,10 +31,10 @@ Event Commands:
 
 ```
 !add [eventType] [parameters1] [parameters2] [parameters3]...
-  !add localWeather [zipCode] [time to send weather, optional]
+  !add localWeather [zipCode] [time to send weather everyday, HH:MM:SS, optional]
   !add dailyQuote
   !add word
-  !add dailyStocks [stock symbol]
+  !add remindMe [date, YYYY-MM-DD] [time, HH:MM:SS] [message]
 ```
 
 Message Example:
@@ -42,15 +44,33 @@ Message Example:
 ```
 User: !help
 
-Bot: NOTE: This Twitter bot is not finished and may be unstable.  Follow @csci3030team3 to be notifyed when it is ready.
-Bot: See a list of the events you are signed up for by sending '!info'
-Bot: Unsubscribe from an event by sending '!unsub [eventID]' or unsubscribe from all events by sending '!unsubAll'
-Bot: Add a new event by sending '!add [eventType] [parameters1] [parameters2]...'
+Bot: '!info'
+     See a list of the events you are signed up for.
+'!unsub [eventID]'
+     Unsubscribe from an event.
+'!unsubAll'
+     Unsubscribe from all events
+'!time'
+     All times are in GTM London (5 hours before EST New York) See the server time by sending .
+'!add [eventType] [parameters1] [parameters2]...'
+     Add a new event.
+
 Bot: Types of events:
-Bot: LOCAL WEATHER: Sends the local weather at the time you want (defalt 8AM).  '!add localWeather [zipCode] [time to send weather, formatted HH:MM:SS (24 hour time).  optional]'
-Bot: DAILY QUOTE*: Sends a daily quote every morning at 7AM.  '!add dailyQuote'
-Bot: DAILY STOCK: Send the value of a stock everyday after the stock market cloeses (5:30PM).  '!add dailyStocks [stock symbol]'
-Bot: WORD OF THE DAY: Sends a daily word every morning at 9AM.  '!add word'
+     LOCAL WEATHER:
+          '!add localWeather [zipCode] [time to send weather, formatted HH:MM:SS (24 hour time).  optional]'
+          Sends the local weather at the time you want (defalt 8AM).
+     DAILY QUOTE:
+          '!add dailyQuote'
+          Sends a daily quote every morning at 7AM.
+     DAILY STOCK*:
+          '!add dailyStocks [stock symbol]'
+          Send the value of a stock everyday after the stock market cloeses (5:30PM).
+     WORD OF THE DAY:
+          '!add word'
+          Sends a daily word every morning at 9AM.
+     REMIND ME:
+          '!add remindMe' [data, formatted YYYY MM DD] [time, formatted HH:MM:SS] [message]
+     Send you a reminder on the date and time you pick.
 ```
 
 !add [eventType]
