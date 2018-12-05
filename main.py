@@ -298,8 +298,8 @@ def tweetGreenvilleWeather():
 # Last Updated:
 #-----------------------------------------------------------------------------------------
 # Everyday at 8am tweet Greenville weather
-#schedule.every().day.at("13:00").do(tweetGreenvilleWeather)
-schedule.every().day.at("22:25").do(tweetGreenvilleWeather)
+schedule.every().day.at("13:00").do(tweetGreenvilleWeather)
+#schedule.every().day.at("22:25").do(tweetGreenvilleWeather)
 
 #          DEBUG
 # --------------------------
